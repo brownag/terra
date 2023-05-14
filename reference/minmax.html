@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,35 +53,46 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for SpatRaster</span>
-<span class="fu">minmax</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co"># S4 method for SpatRaster</span>
-<span class="fu">hasMinMax</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co"># S4 method for SpatRaster</span>
-<span class="fu">setMinMax</span><span class="op">(</span><span class="va">x</span>, force<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for SpatRaster</span></span>
+<span><span class="fu">minmax</span><span class="op">(</span><span class="va">x</span>, compute<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co"># S4 method for SpatRaster</span></span>
+<span><span class="fu">hasMinMax</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co"># S4 method for SpatRaster</span></span>
+<span><span class="fu">setMinMax</span><span class="op">(</span><span class="va">x</span>, force<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatRaster</p></dd>
-<dt>force</dt>
-<dd><p>logical. If <code>TRUE</code> min and max values are recomputed even if already avaialbe</p></dd>
+
+  <dt>compute</dt>
+<dd><p>logical. If <code>TRUE</code> min and max values are computed if they are not available</p></dd>
+
+  <dt>force</dt>
+<dd><p>logical. If <code>TRUE</code> min and max values are recomputed even if already available</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>minmax: numeric matrix of minimum and maximum cell values by layer
-hasMinMax: logical indicating whether the min and max values are available.
-setMinMax: nothing. Used for the side-effect of computing the minimum and maximum values of a SpatRaster</p>
+    
+
+<p>minmax: numeric matrix of minimum and maximum cell values by layer</p>
+
+
+<p>hasMinMax: logical indicating whether the min and max values are available.</p>
+
+
+<p>setMinMax: nothing. Used for the side-effect of computing the minimum and maximum values of a SpatRaster</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/elev.tif"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">minmax</span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      elevation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]       141</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]       547</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/elev.tif"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">minmax</span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     elevation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> min       141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> max       547</span>
 </code></pre></div>
     </div>
   </div>
@@ -96,7 +107,7 @@ setMinMax: nothing. Used for the side-effect of computing the minimum and maximu
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

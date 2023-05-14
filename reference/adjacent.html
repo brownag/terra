@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,29 +53,36 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for SpatRaster</span>
-<span class="fu">adjacent</span><span class="op">(</span><span class="va">x</span>, <span class="va">cells</span>, directions<span class="op">=</span><span class="st">"rook"</span>, pairs<span class="op">=</span><span class="cn">FALSE</span>, include<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="co"># S4 method for SpatVector</span>
-<span class="fu">adjacent</span><span class="op">(</span><span class="va">x</span>, type<span class="op">=</span><span class="st">"rook"</span>, pairs<span class="op">=</span><span class="cn">TRUE</span>, symmetrical<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for SpatRaster</span></span>
+<span><span class="fu">adjacent</span><span class="op">(</span><span class="va">x</span>, <span class="va">cells</span>, directions<span class="op">=</span><span class="st">"rook"</span>, pairs<span class="op">=</span><span class="cn">FALSE</span>, include<span class="op">=</span><span class="cn">FALSE</span>, symmetrical<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for SpatVector</span></span>
+<span><span class="fu">adjacent</span><span class="op">(</span><span class="va">x</span>, type<span class="op">=</span><span class="st">"rook"</span>, pairs<span class="op">=</span><span class="cn">TRUE</span>, symmetrical<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatRaster</p></dd>
-<dt>cells</dt>
+
+  <dt>cells</dt>
 <dd><p>vector of cell numbers for which adjacent cells should be found. Cell numbers start with 1 in the upper-left corner and increase from left to right and from top to bottom</p></dd>
-<dt>directions</dt>
+
+  <dt>directions</dt>
 <dd><p>character or matrix to indicated the directions in which cells are considered connected. The following character values are allowed: "rook" or "4" for the horizontal and vertical neighbors; "bishop" to get the diagonal neighbors; "queen" or "8" to get the vertical, horizontal and diagonal neighbors; or "16" for knight and one-cell queen move neighbors. If <code>directions</code> is a matrix it should have odd dimensions and have logical (or 0, 1) values</p></dd>
-<dt>pairs</dt>
+
+  <dt>pairs</dt>
 <dd><p>logical. If <code>TRUE</code>, a two-column matrix of pairs of adjacent cells is returned. If <code>x</code> is a <code>SpatRaster</code> and <code>pairs</code> is <code>FALSE</code>, an <code>n*m</code> matrix is returned where the number of rows <code>n</code> is <code>length(cells)</code> and the number of columns <code>m</code> is the number of neighbors requested with <code>directions</code></p></dd>
-<dt>include</dt>
-<dd><p>logical. Should the focal cells be included in the result? They are always included if <code>pairs=TRUE</code></p></dd>
-<dt>type</dt>
+
+  <dt>include</dt>
+<dd><p>logical. Should the focal cells be included in the result?</p></dd>
+
+  <dt>type</dt>
 <dd><p>character. One of "rook", "queen", "touches", or "intersects". "queen" and "touches" are synonyms. "rook" exclude polygons that touch at a single node only. "intersects" includes polygons that touch or overlap</p></dd>
-<dt>symmetrical</dt>
-<dd><p>logical. If <code>TRUE</code>, an adjacent pair is only included once. For example, if polygon 1 is adjacent to polygon 3, the implied adjacency between 3 and 1 is not reported</p></dd>
+
+  <dt>symmetrical</dt>
+<dd><p>logical. If <code>TRUE</code> and <code>pairs=TRUE</code>, an adjacent pair is only included once. For example, if polygon 1 is adjacent to polygon 3, the implied adjacency between 3 and 1 is not reported</p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -83,38 +90,40 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>matrix</p>
+    
+
+<p>matrix</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>nrows<span class="op">=</span><span class="fl">10</span>, ncols<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">adjacent</span><span class="op">(</span><span class="va">r</span>, cells<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">55</span><span class="op">)</span>, directions<span class="op">=</span><span class="st">"queen"</span><span class="op">)</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>nrows<span class="op">=</span><span class="fl">10</span>, ncols<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">adjacent</span><span class="op">(</span><span class="va">r</span>, cells<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">55</span><span class="op">)</span>, directions<span class="op">=</span><span class="st">"queen"</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0   NaN  NaN  NaN   10    2   20   11   12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4   NaN  NaN  NaN    4    6   14   15   16</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 54   44   45   46   54   56   64   65   66</span>
-<span class="r-in"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>nrows<span class="op">=</span><span class="fl">10</span>, ncols<span class="op">=</span><span class="fl">10</span>, crs<span class="op">=</span><span class="st">"+proj=utm +zone=1 +datum=WGS84"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">adjacent</span><span class="op">(</span><span class="va">r</span>, cells<span class="op">=</span><span class="fl">11</span>, directions<span class="op">=</span><span class="st">"rook"</span><span class="op">)</span> </span>
+<span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>nrows<span class="op">=</span><span class="fl">10</span>, ncols<span class="op">=</span><span class="fl">10</span>, crs<span class="op">=</span><span class="st">"+proj=utm +zone=1 +datum=WGS84"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">adjacent</span><span class="op">(</span><span class="va">r</span>, cells<span class="op">=</span><span class="fl">11</span>, directions<span class="op">=</span><span class="st">"rook"</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    [,1] [,2] [,3] [,4]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10    1  NaN   12   21</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#same as </span></span>
-<span class="r-in"><span class="va">rk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">adjacent</span><span class="op">(</span><span class="va">r</span>, cells<span class="op">=</span><span class="fl">11</span>, directions<span class="op">=</span><span class="va">rk</span><span class="op">)</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#same as </span></span></span>
+<span class="r-in"><span><span class="va">rk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">adjacent</span><span class="op">(</span><span class="va">r</span>, cells<span class="op">=</span><span class="fl">11</span>, directions<span class="op">=</span><span class="va">rk</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    [,1] [,2] [,3] [,4]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10    1  NaN   12   21</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## note that with global lat/lon data the E and W connect</span></span>
-<span class="r-in"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>nrows<span class="op">=</span><span class="fl">10</span>, ncols<span class="op">=</span><span class="fl">10</span>, crs<span class="op">=</span><span class="st">"+proj=longlat +datum=WGS84"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">adjacent</span><span class="op">(</span><span class="va">r</span>, cells<span class="op">=</span><span class="fl">11</span>, directions<span class="op">=</span><span class="st">"rook"</span><span class="op">)</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## note that with global lat/lon data the E and W connect</span></span></span>
+<span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>nrows<span class="op">=</span><span class="fl">10</span>, ncols<span class="op">=</span><span class="fl">10</span>, crs<span class="op">=</span><span class="st">"+proj=longlat +datum=WGS84"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">adjacent</span><span class="op">(</span><span class="va">r</span>, cells<span class="op">=</span><span class="fl">11</span>, directions<span class="op">=</span><span class="st">"rook"</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    [,1] [,2] [,3] [,4]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10    1   20   12   21</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu">adjacent</span><span class="op">(</span><span class="va">v</span>, symmetrical<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="headtail.html">head</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu">adjacent</span><span class="op">(</span><span class="va">v</span>, symmetrical<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="headtail.html">head</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      from to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    1  2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    1  4</span>
@@ -136,7 +145,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

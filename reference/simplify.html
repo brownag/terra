@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,35 +53,45 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for SpatVector</span>
-<span class="fu">simplifyGeom</span><span class="op">(</span><span class="va">x</span>, tolerance<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for SpatVector</span></span>
+<span><span class="fu">simplifyGeom</span><span class="op">(</span><span class="va">x</span>, tolerance<span class="op">=</span><span class="fl">0.1</span>, preserveTopology<span class="op">=</span><span class="cn">TRUE</span>, makeValid<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatVector of lines or polygons</p></dd>
-<dt>tolerance</dt>
-<dd><p>numeric. The minimum distance between nodes in units of the crs (i.e. degrees for long/lat</p></dd>
+
+  <dt>tolerance</dt>
+<dd><p>numeric. The minimum distance between nodes in units of the crs (i.e. degrees for long/lat)</p></dd>
+
+  <dt>preserveTopology</dt>
+<dd><p>logical. If <code>TRUE</code> the topology of output geometries is preserved</p></dd>
+
+  <dt>makeValid</dt>
+<dd><p>logical. If <code>TRUE</code>, <code><a href="is.valid.html">makeValid</a></code> is run after simplification to assure that the output polygons are valid</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>SpatVector</p>
+    
+
+<p>SpatVector</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="sharedPaths.html">sharedPaths</a></code>, <code><a href="gaps.html">gaps</a></code></p></div>
+    <div class="dont-index"><p><code><a href="sharedPaths.html">sharedPaths</a></code>, <code><a href="gaps.html">gaps</a></code>, <code><a href="is.valid.html">is.valid</a></code></p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu">simplifyGeom</span><span class="op">(</span><span class="va">v</span>, <span class="fl">.02</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu"><a href="erase.html">erase</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="gaps.html">gaps</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">e</span>, lwd<span class="op">=</span><span class="fl">5</span>, border<span class="op">=</span><span class="st">"light gray"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="lines.html">polys</a></span><span class="op">(</span><span class="va">g</span>, col<span class="op">=</span><span class="st">"red"</span>, border<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu">simplifyGeom</span><span class="op">(</span><span class="va">v</span>, <span class="fl">.02</span>, makeValid<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu"><a href="erase.html">erase</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="gaps.html">gaps</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">e</span>, lwd<span class="op">=</span><span class="fl">5</span>, border<span class="op">=</span><span class="st">"light gray"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="lines.html">polys</a></span><span class="op">(</span><span class="va">g</span>, col<span class="op">=</span><span class="st">"red"</span>, border<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="simplify-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -97,7 +107,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

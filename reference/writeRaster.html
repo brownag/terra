@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,24 +53,30 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for SpatRaster,character</span>
-<span class="fu">writeRaster</span><span class="op">(</span><span class="va">x</span>, <span class="va">filename</span>, overwrite<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for SpatRaster,character</span></span>
+<span><span class="fu">writeRaster</span><span class="op">(</span><span class="va">x</span>, <span class="va">filename</span>, overwrite<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatRaster</p></dd>
-<dt>filename</dt>
+
+  <dt>filename</dt>
 <dd><p>character. Output filename. Can be a single filename, or as many filenames as <code>nlyr(x)</code> to write a file for each layer</p></dd>
-<dt>overwrite</dt>
+
+  <dt>overwrite</dt>
 <dd><p>logical. If <code>TRUE</code>, <code>filename</code> is overwritten</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>additional arguments for for writing files. See Details</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>SpatRaster. This function is used for the side-effect of writing values to a file.</p>
+    
+
+<p>SpatRaster. This function is used for the side-effect of writing values to a file.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -78,8 +84,10 @@
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>In writeRaster, and in other methods that generate SpatRaster objects, options for writing raster files to disk can be provided as additional arguments or, in a few cases, as the <code>wopt</code> argument (a named list) if the additional arguments are already used for a different purpose. The following options are available:</p>
-<table class="table table"><tr><td><b>name</b></td><td><b>description</b></td></tr><tr><td><code>datatype</code></td><td>values for <code>datatype</code> are "INT1U", "INT2U", "INT2S", "INT4U", "INT4S", "FLT4S", "FLT8S". The first three letters indicate whether the datatype is integer (whole numbers) of a real number (decimal numbers), the fourth character indicates the number of bytes used (allowing for large numbers and/or more precision), and the  "S" or "U" indicate whether the values are signed (both negative and positive) or unsigned (positive values only).</td></tr><tr><td><code>filetype</code></td><td>file format expresses as <a href="https://gdal.org/drivers/raster/index.html" class="external-link">GDAL driver names</a>. If this argument is not supplied, the driver is derived from the filename.</td></tr><tr><td><code>gdal</code></td><td>GDAL driver specific datasource creation options. See the GDAL documentation. For example, with the <a href="https://gdal.org/drivers/raster/gtiff.html" class="external-link">GeoTiff file format</a> you can use <code>gdal=c("COMPRESS=DEFLATE", "TFW=YES")</code>.</td></tr><tr><td><code>tempdir</code></td><td>the path where temporary files are to be written to.</td></tr><tr><td><code>progress</code></td><td>positive integer. If the number of chunks is larger, a progress bar is shown.</td></tr><tr><td><code>memfrac</code></td><td>numeric between 0 and 0.9 (higher values give a warning). The fraction of available RAM that terra is allowed to use.</td></tr><tr><td><code>memmax</code></td><td>memmax - the maximum amount of RAM (in GB) that terra can use when processing a raster dataset. Should be less than what is detected (see <code><a href="mem.html">mem_info</a></code>, and higher values are ignored. Set it to a negative number or NA to ignore this value).</td></tr><tr><td><code>names</code></td><td>output layer names.</td></tr><tr><td><code>NAflag</code></td><td>numeric. value to represent missing (<code>NA</code> or <code>NaN</code>) values. See note</td></tr><tr><td><code>verbose</code></td><td>logical. If <code>TRUE</code> debugging information is printed.</td></tr><tr><td><code>steps</code></td><td>postive integers. In how many steps (chunks) do you want to process the data (for debugging)</td></tr><tr><td><code>todisk</code></td><td>logical. If <code>TRUE</code> processing operates as if the dataset is very large and needs to be written to a temporary file (for debugging).</td></tr></table></div>
+    <p>In writeRaster, and in other methods that generate SpatRaster objects, options for writing raster files to disk can be provided as additional arguments or, in a few cases, as the <code>wopt</code> argument (a named list) if the additional arguments are already used for a different purpose. See <code><a href="terraOptions.html">terraOptions</a></code> to get or set default values. The following options are available:</p>
+<table class="table table"><tr><td><b>name</b></td><td><b>description</b></td></tr><tr><td><code>datatype</code></td><td>values accepted are "INT1U", "INT2U", "INT2S", "INT4U", "INT4S", "FLT4S", "FLT8S". With GDAL &gt;= 3.5 you can also use "INT8U" and "INT8S". And with GDAL &gt;= 3.7 you can use also use "INT1S". See <code><a href="gdal.html">gdal</a></code> to discover the GDAL version you are using.
+The first three letters indicate whether the datatype is an integer (whole numbers) of a real number ("float", decimal numbers), the fourth character indicates the number of bytes used for each number. Higher values allow for storing larger numbers and/or more precision; but create larger files. The  "S" or "U" indicate whether the values are signed (both negative and positive) or unsigned (zero and positive values only).</td></tr><tr><td><code>filetype</code></td><td>file format expresses as <a href="https://gdal.org/drivers/raster/index.html" class="external-link">GDAL driver names</a>. If this argument is not supplied, the driver is derived from the filename. You can use <code>gdal(drivers=TRUE)</code> to see what drivers are available in your installation</td></tr><tr><td><code>gdal</code></td><td>GDAL driver specific datasource creation options. See the GDAL documentation. For example, with the <a href="https://gdal.org/drivers/raster/gtiff.html" class="external-link">GeoTiff file format</a> you can use <code>gdal=c("COMPRESS=DEFLATE", "TFW=YES")</code>.</td></tr><tr><td><code>tempdir</code></td><td>the path where temporary files are to be written to.</td></tr><tr><td><code>progress</code></td><td>positive integer. If the number of chunks is larger, a progress bar is shown.</td></tr><tr><td><code>memfrac</code></td><td>numeric between 0 and 0.9 (higher values give a warning). The fraction of available RAM that terra is allowed to use.</td></tr><tr><td><code>memmax</code></td><td>memmax - the maximum amount of RAM (in GB) that terra can use when processing a raster dataset. Should be less than what is detected (see <code><a href="mem.html">mem_info</a></code>, and higher values are ignored. Set it to a negative number or NA to ignore this value).</td></tr><tr><td><code>names</code></td><td>output layer names.</td></tr><tr><td><code>NAflag</code></td><td>numeric. value to represent missing (<code>NA</code> or <code>NaN</code>) values. See note</td></tr><tr><td><code>scale</code></td><td>numeric. Cell values written to disk are divided by this value (default is 1). See <code><a href="scoff.html">scoff</a></code></td></tr><tr><td><code>offset</code></td><td>numeric. Value that is subtracted from the cell values written to disk (default is 0). See 
+<code><a href="scoff.html">scoff</a></code></td></tr><tr><td><code>verbose</code></td><td>logical. If <code>TRUE</code> debugging information is printed</td></tr><tr><td><code>steps</code></td><td>positive integers. In how many steps (chunks) do you want to process the data (for debugging)</td></tr><tr><td><code>todisk</code></td><td>logical. If <code>TRUE</code> processing operates as if the dataset is very large and needs to be written to a temporary file (for debugging).</td></tr></table></div>
     <div id="note">
     <h2>Note</h2>
     <p>GeoTiff files are, by default, written with LZW compression. If you do not want compression, use <code>gdal="COMPRESS=NONE"</code>.</p>
@@ -88,25 +96,21 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/terra/" class="external-link">terra</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>nrows<span class="op">=</span><span class="fl">5</span>, ncols<span class="op">=</span><span class="fl">5</span>, vals<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">25</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># create a temporary filename for the example</span></span>
-<span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"test.tif"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">writeRaster</span><span class="op">(</span><span class="va">r</span>, <span class="va">f</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">writeRaster</span><span class="op">(</span><span class="va">r</span>, <span class="va">f</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span>, gdal<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="st">"COMPRESS=NONE"</span>, <span class="st">"TFW=YES"</span>,<span class="st">"of=COG"</span><span class="op">)</span>, datatype<span class="op">=</span><span class="st">'INT1U'</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Message 6: driver GTiff does not support creation option of</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Or with a wopt argument:</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">writeRaster</span><span class="op">(</span><span class="va">r</span>, <span class="va">f</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span>, wopt<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>gdal<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="st">"COMPRESS=NONE"</span>, <span class="st">"of=COG"</span><span class="op">)</span>, datatype<span class="op">=</span><span class="st">'INT1U'</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Message 6: driver GTiff does not support creation option of</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## remove the file</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>nrows<span class="op">=</span><span class="fl">5</span>, ncols<span class="op">=</span><span class="fl">5</span>, vals<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">25</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># create a temporary filename for the example</span></span></span>
+<span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"test.tif"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">writeRaster</span><span class="op">(</span><span class="va">r</span>, <span class="va">f</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">writeRaster</span><span class="op">(</span><span class="va">r</span>, <span class="va">f</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span>, gdal<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="st">"COMPRESS=NONE"</span>, <span class="st">"TFW=YES"</span><span class="op">)</span>, datatype<span class="op">=</span><span class="st">'INT1U'</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Or with a wopt argument:</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">writeRaster</span><span class="op">(</span><span class="va">r</span>, <span class="va">f</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span>, wopt<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>gdal<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="st">"COMPRESS=NONE"</span><span class="op">)</span>, datatype<span class="op">=</span><span class="st">'INT1U'</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## remove the file</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -121,7 +125,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

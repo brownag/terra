@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,38 +53,60 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">sbar</span><span class="op">(</span><span class="va">d</span>, xy<span class="op">=</span><span class="cn">NULL</span>, type<span class="op">=</span><span class="st">"line"</span>, divs<span class="op">=</span><span class="fl">2</span>, below<span class="op">=</span><span class="st">""</span>, 
-    lonlat<span class="op">=</span><span class="cn">NULL</span>, <span class="va">label</span>, adj<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">2</span>, xpd<span class="op">=</span><span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">sbar</span><span class="op">(</span><span class="va">d</span>, xy<span class="op">=</span><span class="cn">NULL</span>, type<span class="op">=</span><span class="st">"line"</span>, divs<span class="op">=</span><span class="fl">2</span>, below<span class="op">=</span><span class="st">""</span>, lonlat<span class="op">=</span><span class="cn">NULL</span>, <span class="va">labels</span>,</span>
+<span>  adj<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">2</span>, xpd<span class="op">=</span><span class="cn">TRUE</span>, ticks<span class="op">=</span><span class="cn">FALSE</span>, scaleby<span class="op">=</span><span class="fl">1</span>, halo<span class="op">=</span><span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>d</dt>
 <dd><p>numeric. Distance covered by the scale bar. For the scale bar, it should be in the units of the coordinates of the plot (map), and in km for angular (longitude/latitude) data; see argument <code>lonlat</code>. It can also be missing</p></dd>
+
 <dt>xy</dt>
 <dd><p>numeric. x and y coordinate to place the scale bar. It can also be one of following character values: "bottomleft", "bottom", "bottomright", topleft", "top", "topright", "left", "right", or NULL</p></dd>
+
 <dt>type</dt>
 <dd><p>for <code>sbar</code>: "line" or "bar"</p></dd>
+
 <dt>divs</dt>
 <dd><p>number of divisions for a bar: 2 or 4</p></dd>
+
 <dt>below</dt>
 <dd><p>character. Text to go below the scale bar (e.g., "kilometers")</p></dd>
+
 <dt>lonlat</dt>
 <dd><p>logical or NULL. If logical, <code>TRUE</code> indicates if the plot is using longitude/latitude coordinates. If <code>NULL</code> this is guessed from the plot's coordinates</p></dd>
-<dt>label</dt>
+
+<dt>labels</dt>
 <dd><p>vector of three numbers to label the scale bar (beginning, midpoint, end)</p></dd>
+
 <dt>adj</dt>
 <dd><p>adjustment for text placement</p></dd>
+
 <dt>lwd</dt>
 <dd><p>line width for the "line" type of the scale bar</p></dd>
+
 <dt>xpd</dt>
 <dd><p>logical. If <code>TRUE</code>, the scale bar can be outside the plotting area</p></dd>
+
+<dt>ticks</dt>
+<dd><p>logical or numeric. If not <code>FALSE</code>, tick marks are added to a "line" scale bar. The length of the tick marks can be specified</p></dd>
+
+<dt>scaleby</dt>
+<dd><p>numeric. If <code>labels</code> is not provided. The labels are divided by this number. For example, use 1000 to go from m to km</p></dd>
+
+<dt>halo</dt>
+<dd><p>logical. If <code>TRUE</code> the "line" type scale bar gets a white background</p></dd>
+
 <dt>...</dt>
 <dd><p>graphical arguments to be passed to other methods</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>none</p>
+    
+
+<p>none</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -93,25 +115,25 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/meuse.tif"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">sbar</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">sbar</span><span class="op">(</span><span class="fl">1000</span>, xy<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">178500</span>, <span class="fl">333500</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"bar"</span>, divs<span class="op">=</span><span class="fl">4</span>, cex<span class="op">=</span><span class="fl">.8</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">sbar</span><span class="op">(</span><span class="fl">1000</span>, xy<span class="op">=</span><span class="st">"bottomright"</span>, divs<span class="op">=</span><span class="fl">4</span>, cex<span class="op">=</span><span class="fl">.8</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="north.html">north</a></span><span class="op">(</span>d<span class="op">=</span><span class="fl">250</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">178550</span>, <span class="fl">332500</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/meuse.tif"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sbar</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sbar</span><span class="op">(</span><span class="fl">1000</span>, xy<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">178500</span>, <span class="fl">333500</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"bar"</span>, divs<span class="op">=</span><span class="fl">4</span>, cex<span class="op">=</span><span class="fl">.8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sbar</span><span class="op">(</span><span class="fl">1000</span>, xy<span class="op">=</span><span class="st">"bottomright"</span>, divs<span class="op">=</span><span class="fl">3</span>, cex<span class="op">=</span><span class="fl">.8</span>, ticks<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="north.html">north</a></span><span class="op">(</span>d<span class="op">=</span><span class="fl">250</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">178550</span>, <span class="fl">332500</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="sbar-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/elev.tif"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span>, type<span class="op">=</span><span class="st">"interval"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">sbar</span><span class="op">(</span><span class="fl">20</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">6.2</span>, <span class="fl">50.1</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"bar"</span>, cex<span class="op">=</span><span class="fl">.8</span>, divs<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">sbar</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">6.3</span>, <span class="fl">50</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"bar"</span>, below<span class="op">=</span><span class="st">"km"</span>, label<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">7.5</span>,<span class="fl">15</span><span class="op">)</span>, cex<span class="op">=</span><span class="fl">.8</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">sbar</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">6.65</span>, <span class="fl">49.8</span><span class="op">)</span>, cex<span class="op">=</span><span class="fl">.8</span>, label<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="st">"km"</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="north.html">north</a></span><span class="op">(</span>type<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">sbar</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">6.65</span>, <span class="fl">49.7</span><span class="op">)</span>, cex<span class="op">=</span><span class="fl">.8</span>, label<span class="op">=</span><span class="st">"15 kilometer"</span>, lwd<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">sbar</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">6.65</span>, <span class="fl">49.6</span><span class="op">)</span>, divs<span class="op">=</span><span class="fl">4</span>, cex<span class="op">=</span><span class="fl">.8</span>, below<span class="op">=</span><span class="st">"km"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/elev.tif"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span>, type<span class="op">=</span><span class="st">"interval"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sbar</span><span class="op">(</span><span class="fl">20</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">6.2</span>, <span class="fl">50.1</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"bar"</span>, cex<span class="op">=</span><span class="fl">.8</span>, divs<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sbar</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">6.3</span>, <span class="fl">50</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"bar"</span>, below<span class="op">=</span><span class="st">"km"</span>, label<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">7.5</span>,<span class="fl">15</span><span class="op">)</span>, cex<span class="op">=</span><span class="fl">.8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sbar</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">6.65</span>, <span class="fl">49.8</span><span class="op">)</span>, cex<span class="op">=</span><span class="fl">.8</span>, label<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="st">"km"</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="north.html">north</a></span><span class="op">(</span>type<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sbar</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">6.65</span>, <span class="fl">49.7</span><span class="op">)</span>, cex<span class="op">=</span><span class="fl">.8</span>, label<span class="op">=</span><span class="st">"15 kilometer"</span>, lwd<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sbar</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">6.65</span>, <span class="fl">49.6</span><span class="op">)</span>, divs<span class="op">=</span><span class="fl">4</span>, cex<span class="op">=</span><span class="fl">.8</span>, below<span class="op">=</span><span class="st">"km"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="sbar-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -127,7 +149,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

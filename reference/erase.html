@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,49 +53,73 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for SpatVector,SpatVector</span>
-<span class="fu">erase</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
-
-<span class="co"># S4 method for SpatVector,missing</span>
-<span class="fu">erase</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for SpatVector,SpatExtent</span>
-<span class="fu">erase</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for SpatVector,SpatVector</span></span>
+<span><span class="fu">erase</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for SpatVector,missing</span></span>
+<span><span class="fu">erase</span><span class="op">(</span><span class="va">x</span>, sequential<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for SpatVector,SpatExtent</span></span>
+<span><span class="fu">erase</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatVector</p></dd>
-<dt>y</dt>
+
+  <dt>y</dt>
 <dd><p>SpatVector or SpatExtent</p></dd>
+
+  <dt>sequential</dt>
+<dd><p>logical. Should areas be erased sequentially? See Details</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>SpatVector or SpatExtent</p>
+    
+
+<p>SpatVector or SpatExtent</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="intersect.html">intersect</a></code>, <code><a href="crop.html">crop</a></code>. 
-The equivalent for SpatRaster is <code><a href="mask.html">mask</a></code></p></div>
+    <div class="dont-index"><p><code><a href="crop.html">crop</a></code> and <code><a href="intersect.html">intersect</a></code> for the inverse.</p>
+<p>The equivalent for SpatRaster is <code><a href="mask.html">mask</a></code></p></div>
+    </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>If polygons are erased sequentially, everything that is covered by the first polygon is removed from all other polygons, then everything that is covered by (what is remaining of) the second polygon is removed, etc.</p>
+<p>If polygons are not erased sequentially, all overlapping areas are erased and only the areas covered by a single geometry are returned.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu"><a href="ext.html">ext</a></span><span class="op">(</span><span class="fl">5.6</span>, <span class="fl">6</span>, <span class="fl">49.55</span>, <span class="fl">49.7</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">erase</span><span class="op">(</span><span class="va">v</span>, <span class="va">e</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="st">"POLYGON ((5.8 49.8, 6 49.9, 6.15 49.8, 6 49.6, 5.8 49.8))"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">erase</span><span class="op">(</span><span class="va">v</span>, <span class="va">p</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># self-erase</span></span>
-<span class="r-in"><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="convhull.html">convHull</a></span><span class="op">(</span><span class="va">v</span><span class="op">[</span><span class="op">-</span><span class="fl">12</span><span class="op">]</span>, <span class="st">"NAME_1"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">he</span> <span class="op">&lt;-</span> <span class="fu">erase</span><span class="op">(</span><span class="va">h</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">h</span>, lwd<span class="op">=</span><span class="fl">2</span>, border<span class="op">=</span><span class="st">"red"</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="lines.html">lines</a></span><span class="op">(</span><span class="va">he</span>, col<span class="op">=</span><span class="st">"gray"</span>, lwd<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># polygons with polygons or extent</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu"><a href="ext.html">ext</a></span><span class="op">(</span><span class="fl">5.6</span>, <span class="fl">6</span>, <span class="fl">49.55</span>, <span class="fl">49.7</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">erase</span><span class="op">(</span><span class="va">v</span>, <span class="va">e</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="st">"POLYGON ((5.8 49.8, 6 49.9, 6.15 49.8, 6 49.6, 5.8 49.8))"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">erase</span><span class="op">(</span><span class="va">v</span>, <span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># lines with polygons</span></span></span>
+<span class="r-in"><span><span class="va">lns</span> <span class="op">&lt;-</span> <span class="fu"><a href="as.lines.html">as.lines</a></span><span class="op">(</span><span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="va">v</span>, ncol<span class="op">=</span><span class="fl">10</span>, nrow<span class="op">=</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">12</span><span class="op">:</span><span class="fl">22</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">eln</span> <span class="op">&lt;-</span> <span class="fu">erase</span><span class="op">(</span><span class="va">lns</span>, <span class="va">v</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="lines.html">lines</a></span><span class="op">(</span><span class="va">lns</span>, col<span class="op">=</span><span class="st">'blue'</span>, lwd<span class="op">=</span><span class="fl">4</span>, lty<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="lines.html">lines</a></span><span class="op">(</span><span class="va">eln</span>, col<span class="op">=</span><span class="st">'red'</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="erase-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## self-erase</span></span></span>
+<span class="r-in"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="convhull.html">convHull</a></span><span class="op">(</span><span class="va">v</span><span class="op">[</span><span class="op">-</span><span class="fl">12</span><span class="op">]</span>, <span class="st">"NAME_1"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">he</span> <span class="op">&lt;-</span> <span class="fu">erase</span><span class="op">(</span><span class="va">h</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">h</span>, lwd<span class="op">=</span><span class="fl">2</span>, border<span class="op">=</span><span class="st">"red"</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="lines.html">lines</a></span><span class="op">(</span><span class="va">he</span>, col<span class="op">=</span><span class="st">"gray"</span>, lwd<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="erase-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </div>
@@ -110,7 +134,7 @@ The equivalent for SpatRaster is <code><a href="mask.html">mask</a></code></p></
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

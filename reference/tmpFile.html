@@ -18,7 +18,7 @@ Temporary files are automatically removed at the end of each R session that ends
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -55,23 +55,29 @@ Temporary files are automatically removed at the end of each R session that ends
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tmpFiles</span><span class="op">(</span>current<span class="op">=</span><span class="cn">TRUE</span>, orphan<span class="op">=</span><span class="cn">FALSE</span>, old<span class="op">=</span><span class="cn">FALSE</span>, remove<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tmpFiles</span><span class="op">(</span>current<span class="op">=</span><span class="cn">TRUE</span>, orphan<span class="op">=</span><span class="cn">FALSE</span>, old<span class="op">=</span><span class="cn">FALSE</span>, remove<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>current</dt>
 <dd><p>logical. If <code>TRUE</code>, temporary files from the current R session are included</p></dd>
-<dt>orphan</dt>
+
+  <dt>orphan</dt>
 <dd><p>logical. If <code>TRUE</code>, temporary files from the current R session that are no longer associated with a SpatRaster object (if <code>current</code> is <code>TRUE</code> these are also included)</p></dd>
-<dt>old</dt>
+
+  <dt>old</dt>
 <dd><p>logical. If <code>TRUE</code>, temporary files from other "R" sessions. Unless you are running multiple instances of R at the same time, these are from old (possibly crashed) R  sessions and should be removed</p></dd>
-<dt>remove</dt>
+
+  <dt>remove</dt>
 <dd><p>logical. If <code>TRUE</code>, temporary files are removed</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>character</p>
+    
+
+<p>character</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -80,8 +86,8 @@ Temporary files are automatically removed at the end of each R session that ends
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">tmpFiles</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tmpFiles</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpAjM8Ug/spat_C3i8AMU5myNopqU_46799.vrt"</span>
 </code></pre></div>
     </div>
   </div>
@@ -96,7 +102,7 @@ Temporary files are automatically removed at the end of each R session that ends
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

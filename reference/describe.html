@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,82 +53,103 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for character</span>
-<span class="fu">describe</span><span class="op">(</span><span class="va">x</span>, sds<span class="op">=</span><span class="cn">FALSE</span>, meta<span class="op">=</span><span class="cn">FALSE</span>, parse<span class="op">=</span><span class="cn">FALSE</span>, options<span class="op">=</span><span class="st">""</span>, print<span class="op">=</span><span class="cn">FALSE</span>, open_opt<span class="op">=</span><span class="st">""</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for character</span></span>
+<span><span class="fu">describe</span><span class="op">(</span><span class="va">x</span>, sds<span class="op">=</span><span class="cn">FALSE</span>, meta<span class="op">=</span><span class="cn">FALSE</span>, parse<span class="op">=</span><span class="cn">FALSE</span>, options<span class="op">=</span><span class="st">""</span>, print<span class="op">=</span><span class="cn">FALSE</span>, open_opt<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>character. The name of a file with spatial data. Or a fully specified subdataset within a file such as <code>"NETCDF:\"AVHRR.nc\":NDVI"</code></p></dd>
-<dt>sds</dt>
+
+  <dt>sds</dt>
 <dd><p>logical. If <code>TRUE</code> the description or metadata of the subdatasets is returned (if available)</p></dd>
-<dt>meta</dt>
+
+  <dt>meta</dt>
 <dd><p>logical. Get the file level metadata instead</p></dd>
-<dt>parse</dt>
+
+  <dt>parse</dt>
 <dd><p>logical. If <code>TRUE</code>, metadata for subdatasets is parsed into components (if <code>meta=TRUE</code>)</p></dd>
-<dt>options</dt>
+
+  <dt>options</dt>
 <dd><p>character. A vector of valid options (if <code>meta=FALSE</code>) including "json", "mm", "stats", "hist", "nogcp", "nomd", "norat", "noct", "nofl", "checksum", "proj4", "listmdd", "mdd &lt;value&gt;" where &lt;value&gt; specifies a domain or 'all', "wkt_format &lt;value&gt;" where value is one of 'WKT1', 'WKT2', 'WKT2_2015', or 'WKT2_2018', "sd &lt;subdataset&gt;" where &lt;subdataset&gt; is the name or identifier of a sub-dataset. See <a href="https://gdal.org/programs/gdalinfo.html" class="external-link">https://gdal.org/programs/gdalinfo.html</a>. Ignored if <code>sds=TRUE</code></p></dd>
-<dt>print</dt>
+  
+  <dt>print</dt>
 <dd><p>logical. If <code>TRUE</code>, print the results</p></dd>
-<dt>open_opt</dt>
+
+  <dt>open_opt</dt>
 <dd><p>character. Driver specific open options</p></dd>
+   
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>character (invisibly, if <code>print=FALSE</code>)</p>
+    
+
+<p>character (invisibly, if <code>print=FALSE</code>)</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/elev.tif"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">describe</span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/elev.tif"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">describe</span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Driver: GTiff/GeoTIFF"                                                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "Files: /Users/runner/work/_temp/Library/terra/ex/elev.tif"                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "Size is 95, 90"                                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "Coordinate System is:"                                                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "GEOGCRS[\"WGS 84\","                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "    DATUM[\"World Geodetic System 1984\","                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "        ELLIPSOID[\"WGS 84\",6378137,298.257223563,"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "            LENGTHUNIT[\"metre\",1]]],"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "    PRIMEM[\"Greenwich\",0,"                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "        ANGLEUNIT[\"degree\",0.0174532925199433]],"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "    CS[ellipsoidal,2],"                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "        AXIS[\"geodetic latitude (Lat)\",north,"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "            ORDER[1],"                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "            ANGLEUNIT[\"degree\",0.0174532925199433]],"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "        AXIS[\"geodetic longitude (Lon)\",east,"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "            ORDER[2],"                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "            ANGLEUNIT[\"degree\",0.0174532925199433]],"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "    ID[\"EPSG\",4326]]"                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "Data axis to CRS axis mapping: 2,1"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "Origin = (5.741666666666666,50.191666666666663)"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "Pixel Size = (0.008333333333333,-0.008333333333333)"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "Metadata:"                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "  AREA_OR_POINT=Area"                                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "Image Structure Metadata:"                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "  COMPRESSION=LZW"                                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "  INTERLEAVE=BAND"                                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "Corner Coordinates:"                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "Upper Left  (   5.7416667,  50.1916667) (  5d44'30.00\"E, 50d11'30.00\"N)"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "Lower Left  (   5.7416667,  49.4416667) (  5d44'30.00\"E, 49d26'30.00\"N)"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "Upper Right (   6.5333333,  50.1916667) (  6d32' 0.00\"E, 50d11'30.00\"N)"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "Lower Right (   6.5333333,  49.4416667) (  6d32' 0.00\"E, 49d26'30.00\"N)"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "Center      (   6.1375000,  49.8166667) (  6d 8'15.00\"E, 49d49' 0.00\"N)"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "Band 1 Block=95x43 Type=Int16, ColorInterp=Gray"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "  Description = elevation"                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "  Min=141.000 Max=547.000 "                                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "  Minimum=141.000, Maximum=547.000, Mean=-9999.000, StdDev=-9999.000"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "  NoData Value=-32768"                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "  Metadata:"                                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "    STATISTICS_MAXIMUM=547"                                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "    STATISTICS_MEAN=-9999"                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "    STATISTICS_MINIMUM=141"                                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "    STATISTICS_STDDEV=-9999"                                              </span>
-<span class="r-in"><span class="fu">describe</span><span class="op">(</span><span class="va">f</span>, meta<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "    ENSEMBLE[\"World Geodetic System 1984 ensemble\","                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "        MEMBER[\"World Geodetic System 1984 (Transit)\"],"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "        MEMBER[\"World Geodetic System 1984 (G730)\"],"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "        MEMBER[\"World Geodetic System 1984 (G873)\"],"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "        MEMBER[\"World Geodetic System 1984 (G1150)\"],"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "        MEMBER[\"World Geodetic System 1984 (G1674)\"],"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "        MEMBER[\"World Geodetic System 1984 (G1762)\"],"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "        MEMBER[\"World Geodetic System 1984 (G2139)\"],"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "        ELLIPSOID[\"WGS 84\",6378137,298.257223563,"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "            LENGTHUNIT[\"metre\",1]],"                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "        ENSEMBLEACCURACY[2.0]],"                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "    PRIMEM[\"Greenwich\",0,"                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "        ANGLEUNIT[\"degree\",0.0174532925199433]],"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "    CS[ellipsoidal,2],"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "        AXIS[\"geodetic latitude (Lat)\",north,"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "            ORDER[1],"                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "            ANGLEUNIT[\"degree\",0.0174532925199433]],"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "        AXIS[\"geodetic longitude (Lon)\",east,"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "            ORDER[2],"                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "            ANGLEUNIT[\"degree\",0.0174532925199433]],"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "    USAGE["                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "        SCOPE[\"Horizontal component of 3D system.\"],"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "        AREA[\"World.\"],"                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "        BBOX[-90,-180,90,180]],"                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "    ID[\"EPSG\",4326]]"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "Data axis to CRS axis mapping: 2,1"                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "Origin = (5.741666666666666,50.191666666666663)"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "Pixel Size = (0.008333333333333,-0.008333333333333)"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "Metadata:"                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "  AREA_OR_POINT=Area"                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "Image Structure Metadata:"                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "  COMPRESSION=LZW"                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "  INTERLEAVE=BAND"                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "Corner Coordinates:"                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "Upper Left  (   5.7416667,  50.1916667) (  5d44'30.00\"E, 50d11'30.00\"N)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "Lower Left  (   5.7416667,  49.4416667) (  5d44'30.00\"E, 49d26'30.00\"N)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "Upper Right (   6.5333333,  50.1916667) (  6d32' 0.00\"E, 50d11'30.00\"N)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "Lower Right (   6.5333333,  49.4416667) (  6d32' 0.00\"E, 49d26'30.00\"N)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "Center      (   6.1375000,  49.8166667) (  6d 8'15.00\"E, 49d49' 0.00\"N)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "Band 1 Block=95x43 Type=Int16, ColorInterp=Gray"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "  Description = elevation"                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "  Min=141.000 Max=547.000 "                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [48] "  Minimum=141.000, Maximum=547.000, Mean=-9999.000, StdDev=-9999.000"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "  NoData Value=-32768"                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [50] "  Metadata:"                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "    STATISTICS_MAXIMUM=547"                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "    STATISTICS_MEAN=-9999"                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "    STATISTICS_MINIMUM=141"                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [54] "    STATISTICS_STDDEV=-9999"                                              </span>
+<span class="r-in"><span><span class="fu">describe</span><span class="op">(</span><span class="va">f</span>, meta<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "AREA_OR_POINT=Area"</span>
-<span class="r-in"><span class="co">#g &lt;- describe(f, options=c("json", "nomd", "proj4"))</span></span>
-<span class="r-in"><span class="co">#head(g)</span></span>
+<span class="r-in"><span><span class="co">#g &lt;- describe(f, options=c("json", "nomd", "proj4"))</span></span></span>
+<span class="r-in"><span><span class="co">#head(g)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -143,7 +164,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,37 +53,45 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">focalMat</span><span class="op">(</span><span class="va">x</span>, <span class="va">d</span>, type<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="st">'circle'</span>, <span class="st">'Gauss'</span>, <span class="st">'rectangle'</span><span class="op">)</span>, fillNA<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">focalMat</span><span class="op">(</span><span class="va">x</span>, <span class="va">d</span>, type<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="st">'circle'</span>, <span class="st">'Gauss'</span>, <span class="st">'rectangle'</span><span class="op">)</span>, fillNA<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatRaster</p></dd>
+
 <dt>d</dt>
 <dd><p>numeric. If <code>type=circle</code>, the radius of the circle (in units of the crs). If <code>type=rectangle</code> the dimension of the rectangle (one or two numbers). If <code>type=Gauss</code> the size of sigma, and optionally another number to determine the size of the matrix returned (default is 3*sigma)</p></dd>
+ 
 <dt>type</dt>
 <dd><p>character indicating the type of filter to be returned</p></dd>
+
 <dt>fillNA</dt>
 <dd><p>logical. If <code>TRUE</code>, zeros are set to <code>NA</code> such that they are ignored in the computations. Only applies to <code>type="circle"</code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>matrix that can be used with <code><a href="focal.html">focal</a></code></p>
+    
+
+<p>matrix that can be used with <code><a href="focal.html">focal</a></code></p>
+
+
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>ncols<span class="op">=</span><span class="fl">180</span>, nrows<span class="op">=</span><span class="fl">180</span>, xmin<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">focalMat</span><span class="op">(</span><span class="va">r</span>, <span class="fl">2</span>, <span class="st">"circle"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>ncols<span class="op">=</span><span class="fl">180</span>, nrows<span class="op">=</span><span class="fl">180</span>, xmin<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">focalMat</span><span class="op">(</span><span class="va">r</span>, <span class="fl">2</span>, <span class="st">"circle"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]       [,2]       [,3]       [,4]       [,5]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.00000000 0.00000000 0.07692308 0.00000000 0.00000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 0.00000000 0.07692308 0.07692308 0.07692308 0.00000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,] 0.00000000 0.07692308 0.07692308 0.07692308 0.00000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [5,] 0.00000000 0.00000000 0.07692308 0.00000000 0.00000000</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">focalMat</span><span class="op">(</span><span class="va">r</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, <span class="st">"rect"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">focalMat</span><span class="op">(</span><span class="va">r</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, <span class="st">"rect"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]       [,2]       [,3]       [,4]       [,5]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.02857143 0.02857143 0.02857143 0.02857143 0.02857143</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 0.02857143 0.02857143 0.02857143 0.02857143 0.02857143</span>
@@ -92,9 +100,9 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [5,] 0.02857143 0.02857143 0.02857143 0.02857143 0.02857143</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [6,] 0.02857143 0.02857143 0.02857143 0.02857143 0.02857143</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [7,] 0.02857143 0.02857143 0.02857143 0.02857143 0.02857143</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Gaussian filter for square cells</span></span>
-<span class="r-in"><span class="va">gf</span> <span class="op">&lt;-</span> <span class="fu">focalMat</span><span class="op">(</span><span class="va">r</span>, <span class="fl">1</span>, <span class="st">"Gauss"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Gaussian filter for square cells</span></span></span>
+<span class="r-in"><span><span class="va">gf</span> <span class="op">&lt;-</span> <span class="fu">focalMat</span><span class="op">(</span><span class="va">r</span>, <span class="fl">1</span>, <span class="st">"Gauss"</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -109,7 +117,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

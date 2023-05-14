@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,45 +53,53 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for SpatRaster</span>
-<span class="fu">text</span><span class="op">(</span><span class="va">x</span>, <span class="va">labels</span>, digits<span class="op">=</span><span class="fl">0</span>, halo<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for SpatVector</span>
-<span class="fu">text</span><span class="op">(</span><span class="va">x</span>, <span class="va">labels</span>, halo<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for SpatRaster</span></span>
+<span><span class="fu">text</span><span class="op">(</span><span class="va">x</span>, <span class="va">labels</span>, digits<span class="op">=</span><span class="fl">0</span>, halo<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for SpatVector</span></span>
+<span><span class="fu">text</span><span class="op">(</span><span class="va">x</span>, <span class="va">labels</span>, halo<span class="op">=</span><span class="cn">FALSE</span>, inside<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatRaster or SpatVector</p></dd>
-<dt>labels</dt>
+
+  <dt>labels</dt>
 <dd><p>character. Optional. Vector of labels with <code>length(x)</code> or a variable name from <code>names(x)</code></p></dd>
-<dt>digits</dt>
-<dd><p>integer. how many digits should be used?</p></dd>
-<dt>halo</dt>
-<dd><p>logical. If <code>TRUE</code> a "halo" is printed around the text. If <code>TRUE</code>, additional arguments <code>hc="white"</code> and <code>hw=0.1</code> can be modified to set the colour and width of the halo</p></dd>
-<dt>...</dt>
+
+  <dt>digits</dt>
+<dd><p>integer. How many digits should be used?</p></dd>
+
+  <dt>halo</dt>
+<dd><p>logical. If <code>TRUE</code> a "halo" is printed around the text. If <code>TRUE</code>, additional arguments <code>hc="white"</code> and <code>hw=0.1</code> can be modified to set the color and width of the halo</p></dd>
+
+  <dt>inside</dt>
+<dd><p>logical. Should the text always be placed inside one the sub-geometries?</p></dd>
+
+  <dt>...</dt>
 <dd><p>additional arguments to pass to graphics function <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code></p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a>, <a href="plot.html">plot</a></code></p></div>
+    <div class="dont-index"><p><code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a>, <a href="plot.html">plot</a>, <a href="halo.html">halo</a></code></p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>nrows<span class="op">=</span><span class="fl">4</span>, ncols<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="values.html">values</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="dimensions.html">ncell</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">text</span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>nrows<span class="op">=</span><span class="fl">4</span>, ncols<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="values.html">values</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="dimensions.html">ncell</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">text</span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="text-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">text</span><span class="op">(</span><span class="va">r</span>, halo<span class="op">=</span><span class="cn">TRUE</span>, hc<span class="op">=</span><span class="st">"blue"</span>, col<span class="op">=</span><span class="st">"white"</span>, hw<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">text</span><span class="op">(</span><span class="va">r</span>, halo<span class="op">=</span><span class="cn">TRUE</span>, hc<span class="op">=</span><span class="st">"blue"</span>, col<span class="op">=</span><span class="st">"white"</span>, hw<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="text-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="fl">16</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">text</span><span class="op">(</span><span class="va">r</span>, col<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"white"</span><span class="op">)</span>, vfont<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="st">"sans serif"</span>, <span class="st">"bold"</span><span class="op">)</span>, cex<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="fl">16</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">text</span><span class="op">(</span><span class="va">r</span>, col<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"white"</span><span class="op">)</span>, vfont<span class="op">=</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="st">"sans serif"</span>, <span class="st">"bold"</span><span class="op">)</span>, cex<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="text-3.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -107,7 +115,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

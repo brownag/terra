@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,44 +53,55 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for SpatVector,character</span>
-<span class="fu">writeVector</span><span class="op">(</span><span class="va">x</span>, <span class="va">filename</span>, filetype<span class="op">=</span><span class="cn">NULL</span>, layer<span class="op">=</span><span class="cn">NULL</span>, insert<span class="op">=</span><span class="cn">FALSE</span>,
-    overwrite<span class="op">=</span><span class="cn">FALSE</span>, options<span class="op">=</span><span class="st">"ENCODING=UTF-8"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for SpatVector,character</span></span>
+<span><span class="fu">writeVector</span><span class="op">(</span><span class="va">x</span>, <span class="va">filename</span>, filetype<span class="op">=</span><span class="cn">NULL</span>, layer<span class="op">=</span><span class="cn">NULL</span>, insert<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>    overwrite<span class="op">=</span><span class="cn">FALSE</span>, options<span class="op">=</span><span class="st">"ENCODING=UTF-8"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatVector</p></dd>
-<dt>filename</dt>
+
+  <dt>filename</dt>
 <dd><p>character. Output filename</p></dd>
-<dt>filetype</dt>
+
+  <dt>filetype</dt>
 <dd><p>character. A file format associated with a GDAL "driver" such as "ESRI Shapefile". See <code>gdal(drivers=TRUE)</code> or the <a href="https://gdal.org/drivers/vector/index.html" class="external-link">GDAL docs</a>. If <code>NULL</code> it is attempted to guess the filetype from the filename extension</p></dd>
-<dt>layer</dt>
+
+  <dt>layer</dt>
 <dd><p>character. Output layer name. If <code>NULL</code> the filename is used</p></dd>
-<dt>insert</dt>
+
+  <dt>insert</dt>
 <dd><p>logical. If <code>TRUE</code>, a new layer is inserted into the file, if the format allows it (e.g. GPKG allows that). See <code><a href="vector_layers.html">vector_layers</a></code> to remove a layer</p></dd>
-<dt>overwrite</dt>
+
+  <dt>overwrite</dt>
 <dd><p>logical. If <code>TRUE</code>, <code>filename</code> is overwritten</p></dd>
-<dt>options</dt>
+
+  <dt>options</dt>
 <dd><p>character. Format specific GDAL options such as "ENCODING=UTF-8". Use NULL or "" to not use any options</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="crs.html">crs</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"+proj=longlat +datum=WGS84"</span></span>
-<span class="r-in"><span class="va">v</span><span class="op">$</span><span class="va">id</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="dimensions.html">length</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="dimensions.html">length</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">tmpf1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">writeVector</span><span class="op">(</span><span class="va">v</span>, <span class="va">tmpf1</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">tmpf1</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">tmpf2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">writeVector</span><span class="op">(</span><span class="va">v</span>, <span class="va">tmpf2</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">tmpf2</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="crs.html">crs</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"+proj=longlat +datum=WGS84"</span></span></span>
+<span class="r-in"><span><span class="va">v</span><span class="op">$</span><span class="va">id</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="dimensions.html">length</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="dimensions.html">length</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">tmpf1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">".gpkg"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">writeVector</span><span class="op">(</span><span class="va">v</span>, <span class="va">tmpf1</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> [writeVector] file exists. Use 'overwrite=TRUE' to overwrite it</span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">tmpf1</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> [vect] file does not exist: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpAjM8Ug/fileb6cf22b934c7.gpkg</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">tmpf2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">".gpkg"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">writeVector</span><span class="op">(</span><span class="va">v</span>, <span class="va">tmpf2</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> [writeVector] file exists. Use 'overwrite=TRUE' to overwrite it</span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">tmpf2</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> [vect] file does not exist: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpAjM8Ug/fileb6cf2d3806a0.gpkg</span>
 </code></pre></div>
     </div>
   </div>
@@ -105,7 +116,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

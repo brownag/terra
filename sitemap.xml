@@ -4,6 +4,9 @@
     <loc>/404.html</loc>
   </url>
   <url>
+    <loc>/ISSUE_TEMPLATE.html</loc>
+  </url>
+  <url>
     <loc>/LICENSE-text.html</loc>
   </url>
   <url>
@@ -67,13 +70,19 @@
     <loc>/reference/as.data.frame.html</loc>
   </url>
   <url>
+    <loc>/reference/as.lines.html</loc>
+  </url>
+  <url>
     <loc>/reference/as.list.html</loc>
   </url>
   <url>
-    <loc>/reference/as.raster.html</loc>
+    <loc>/reference/as.points.html</loc>
   </url>
   <url>
-    <loc>/reference/as.spatvector.html</loc>
+    <loc>/reference/as.polygons.html</loc>
+  </url>
+  <url>
+    <loc>/reference/as.raster.html</loc>
   </url>
   <url>
     <loc>/reference/atan2.html</loc>
@@ -115,6 +124,9 @@
     <loc>/reference/clamp.html</loc>
   </url>
   <url>
+    <loc>/reference/clamp_ts.html</loc>
+  </url>
+  <url>
     <loc>/reference/classify.html</loc>
   </url>
   <url>
@@ -130,10 +142,16 @@
     <loc>/reference/colors.html</loc>
   </url>
   <url>
+    <loc>/reference/combineGeoms.html</loc>
+  </url>
+  <url>
     <loc>/reference/compare-generics.html</loc>
   </url>
   <url>
     <loc>/reference/compareGeom.html</loc>
+  </url>
+  <url>
+    <loc>/reference/concats.html</loc>
   </url>
   <url>
     <loc>/reference/contour.html</loc>
@@ -143,6 +161,9 @@
   </url>
   <url>
     <loc>/reference/coords.html</loc>
+  </url>
+  <url>
+    <loc>/reference/costDist.html</loc>
   </url>
   <url>
     <loc>/reference/cover.html</loc>
@@ -164,6 +185,9 @@
   </url>
   <url>
     <loc>/reference/density.html</loc>
+  </url>
+  <url>
+    <loc>/reference/deprecated.html</loc>
   </url>
   <url>
     <loc>/reference/depth.html</loc>
@@ -191,6 +215,9 @@
   </url>
   <url>
     <loc>/reference/draw.html</loc>
+  </url>
+  <url>
+    <loc>/reference/elongate.html</loc>
   </url>
   <url>
     <loc>/reference/erase.html</loc>
@@ -226,13 +253,13 @@
     <loc>/reference/focal3D.html</loc>
   </url>
   <url>
-    <loc>/reference/focalCor.html</loc>
-  </url>
-  <url>
     <loc>/reference/focalCpp.html</loc>
   </url>
   <url>
     <loc>/reference/focalMat.html</loc>
+  </url>
+  <url>
+    <loc>/reference/focalPairs.html</loc>
   </url>
   <url>
     <loc>/reference/focalReg.html</loc>
@@ -259,7 +286,13 @@
     <loc>/reference/global.html</loc>
   </url>
   <url>
-    <loc>/reference/gridDistance.html</loc>
+    <loc>/reference/graticule.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gridDist.html</loc>
+  </url>
+  <url>
+    <loc>/reference/halo.html</loc>
   </url>
   <url>
     <loc>/reference/headtail.html</loc>
@@ -289,6 +322,12 @@
     <loc>/reference/inset.html</loc>
   </url>
   <url>
+    <loc>/reference/interpIDW.html</loc>
+  </url>
+  <url>
+    <loc>/reference/interpNear.html</loc>
+  </url>
+  <url>
     <loc>/reference/interpolate.html</loc>
   </url>
   <url>
@@ -301,13 +340,16 @@
     <loc>/reference/is.lonlat.html</loc>
   </url>
   <url>
-    <loc>/reference/isvalid.html</loc>
+    <loc>/reference/is.valid.html</loc>
   </url>
   <url>
     <loc>/reference/lapp.html</loc>
   </url>
   <url>
     <loc>/reference/layerCor.html</loc>
+  </url>
+  <url>
+    <loc>/reference/legend.html</loc>
   </url>
   <url>
     <loc>/reference/linearUnits.html</loc>
@@ -320,6 +362,9 @@
   </url>
   <url>
     <loc>/reference/makeVRT.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mappal.html</loc>
   </url>
   <url>
     <loc>/reference/mask.html</loc>
@@ -340,6 +385,9 @@
     <loc>/reference/mergeTime.html</loc>
   </url>
   <url>
+    <loc>/reference/meta.html</loc>
+  </url>
+  <url>
     <loc>/reference/minmax.html</loc>
   </url>
   <url>
@@ -358,13 +406,22 @@
     <loc>/reference/nearby.html</loc>
   </url>
   <url>
+    <loc>/reference/normalize.longitude.html</loc>
+  </url>
+  <url>
     <loc>/reference/north.html</loc>
+  </url>
+  <url>
+    <loc>/reference/not.na.html</loc>
   </url>
   <url>
     <loc>/reference/origin.html</loc>
   </url>
   <url>
     <loc>/reference/pairs.html</loc>
+  </url>
+  <url>
+    <loc>/reference/panel.html</loc>
   </url>
   <url>
     <loc>/reference/patches.html</loc>
@@ -376,10 +433,19 @@
     <loc>/reference/persp.html</loc>
   </url>
   <url>
+    <loc>/reference/plet.html</loc>
+  </url>
+  <url>
     <loc>/reference/plot.html</loc>
   </url>
   <url>
     <loc>/reference/plotRGB.html</loc>
+  </url>
+  <url>
+    <loc>/reference/plot_extent.html</loc>
+  </url>
+  <url>
+    <loc>/reference/plot_graticule.html</loc>
   </url>
   <url>
     <loc>/reference/predict.html</loc>
@@ -394,6 +460,9 @@
     <loc>/reference/query.html</loc>
   </url>
   <url>
+    <loc>/reference/rangeFill.html</loc>
+  </url>
+  <url>
     <loc>/reference/rapp.html</loc>
   </url>
   <url>
@@ -403,10 +472,22 @@
     <loc>/reference/rasterize.html</loc>
   </url>
   <url>
+    <loc>/reference/rasterizeGeom.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rasterizeWin.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rcl.html</loc>
+  </url>
+  <url>
     <loc>/reference/readwrite.html</loc>
   </url>
   <url>
     <loc>/reference/rectify.html</loc>
+  </url>
+  <url>
+    <loc>/reference/regress.html</loc>
   </url>
   <url>
     <loc>/reference/relate.html</loc>
@@ -415,10 +496,13 @@
     <loc>/reference/rep.html</loc>
   </url>
   <url>
-    <loc>/reference/replace-vector.html</loc>
+    <loc>/reference/replace_dollar.html</loc>
   </url>
   <url>
-    <loc>/reference/replace.html</loc>
+    <loc>/reference/replace_layers.html</loc>
+  </url>
+  <url>
+    <loc>/reference/replace_values.html</loc>
   </url>
   <url>
     <loc>/reference/resample.html</loc>
@@ -427,7 +511,13 @@
     <loc>/reference/rescale.html</loc>
   </url>
   <url>
+    <loc>/reference/roll.html</loc>
+  </url>
+  <url>
     <loc>/reference/rotate.html</loc>
+  </url>
+  <url>
+    <loc>/reference/same.crs.html</loc>
   </url>
   <url>
     <loc>/reference/sample.html</loc>
@@ -443,6 +533,9 @@
   </url>
   <url>
     <loc>/reference/scatter.html</loc>
+  </url>
+  <url>
+    <loc>/reference/scoff.html</loc>
   </url>
   <url>
     <loc>/reference/sds.html</loc>
@@ -475,7 +568,13 @@
     <loc>/reference/shift.html</loc>
   </url>
   <url>
+    <loc>/reference/sieve.html</loc>
+  </url>
+  <url>
     <loc>/reference/simplify.html</loc>
+  </url>
+  <url>
+    <loc>/reference/sort.html</loc>
   </url>
   <url>
     <loc>/reference/sources.html</loc>
@@ -493,10 +592,16 @@
     <loc>/reference/stretch.html</loc>
   </url>
   <url>
-    <loc>/reference/subset-vector.html</loc>
+    <loc>/reference/subset.html</loc>
   </url>
   <url>
-    <loc>/reference/subset.html</loc>
+    <loc>/reference/subset_dollar.html</loc>
+  </url>
+  <url>
+    <loc>/reference/subset_double.html</loc>
+  </url>
+  <url>
+    <loc>/reference/subset_single.html</loc>
   </url>
   <url>
     <loc>/reference/subst.html</loc>
@@ -553,6 +658,9 @@
     <loc>/reference/units.html</loc>
   </url>
   <url>
+    <loc>/reference/update.html</loc>
+  </url>
+  <url>
     <loc>/reference/values.html</loc>
   </url>
   <url>
@@ -562,6 +670,9 @@
     <loc>/reference/vector_layers.html</loc>
   </url>
   <url>
+    <loc>/reference/viewshed.html</loc>
+  </url>
+  <url>
     <loc>/reference/voronoi.html</loc>
   </url>
   <url>
@@ -569,6 +680,9 @@
   </url>
   <url>
     <loc>/reference/weighted.mean.html</loc>
+  </url>
+  <url>
+    <loc>/reference/where.html</loc>
   </url>
   <url>
     <loc>/reference/which.html</loc>

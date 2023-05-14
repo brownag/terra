@@ -19,7 +19,7 @@ as.contour returns the contour lines as a SpatVector."><meta property="og:image"
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -57,23 +57,27 @@ as.contour returns the contour lines as a SpatVector."><meta property="og:image"
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for SpatRaster</span>
-<span class="fu">contour</span><span class="op">(</span><span class="va">x</span>, maxcells<span class="op">=</span><span class="fl">100000</span>, filled<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for SpatRaster</span>
-<span class="fu">as.contour</span><span class="op">(</span><span class="va">x</span>, maxcells<span class="op">=</span><span class="fl">100000</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for SpatRaster</span></span>
+<span><span class="fu">contour</span><span class="op">(</span><span class="va">x</span>, maxcells<span class="op">=</span><span class="fl">100000</span>, filled<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for SpatRaster</span></span>
+<span><span class="fu">as.contour</span><span class="op">(</span><span class="va">x</span>, maxcells<span class="op">=</span><span class="fl">100000</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatRaster. Only the first layer is used</p></dd>
-<dt>maxcells</dt>
+
+  <dt>maxcells</dt>
 <dd><p>maximum number of pixels used to create the contours</p></dd>
-<dt>filled</dt>
+
+  <dt>filled</dt>
 <dd><p>logical. If <code>TRUE</code>, a <code><a href="https://rdrr.io/r/graphics/filled.contour.html" class="external-link">filled.contour</a></code> plot is made</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>any argument that can be passed to <code><a href="https://rdrr.io/r/graphics/contour.html" class="external-link">contour</a></code> or  <code><a href="https://rdrr.io/r/graphics/filled.contour.html" class="external-link">filled.contour</a></code> (graphics package)</p></dd>
+  
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -82,27 +86,27 @@ as.contour returns the contour lines as a SpatVector."><meta property="og:image"
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/elev.tif"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">contour</span><span class="op">(</span><span class="va">r</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/elev.tif"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">contour</span><span class="op">(</span><span class="va">r</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="contour-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu">as.contour</span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="lines.html">lines</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu">as.contour</span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="lines.html">lines</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="contour-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">contour</span><span class="op">(</span><span class="va">r</span>, filled<span class="op">=</span><span class="cn">TRUE</span>, nlevels<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">contour</span><span class="op">(</span><span class="va">r</span>, filled<span class="op">=</span><span class="cn">TRUE</span>, nlevels<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="contour-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## if you want a SpatVector with contour lines</span></span>
-<span class="r-in"><span class="va">template</span> <span class="op">&lt;-</span> <span class="fu"><a href="disaggregate.html">disagg</a></span><span class="op">(</span><span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">rr</span> <span class="op">&lt;-</span> <span class="fu"><a href="resample.html">resample</a></span><span class="op">(</span><span class="va">r</span>, <span class="va">template</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">rr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="va">rr</span><span class="op">/</span><span class="fl">100</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="as.spatvector.html">as.polygons</a></span><span class="op">(</span><span class="va">rr</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">v</span>, <span class="fl">1</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">terrain.colors</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## if you want a SpatVector with contour lines</span></span></span>
+<span class="r-in"><span><span class="va">template</span> <span class="op">&lt;-</span> <span class="fu"><a href="disaggregate.html">disagg</a></span><span class="op">(</span><span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">rr</span> <span class="op">&lt;-</span> <span class="fu"><a href="resample.html">resample</a></span><span class="op">(</span><span class="va">r</span>, <span class="va">template</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">rr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="va">rr</span><span class="op">/</span><span class="fl">100</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="as.polygons.html">as.polygons</a></span><span class="op">(</span><span class="va">rr</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="plot.html">plot</a></span><span class="op">(</span><span class="va">v</span>, <span class="fl">1</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">terrain.colors</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="contour-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -117,7 +121,7 @@ as.contour returns the contour lines as a SpatVector."><meta property="og:image"
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

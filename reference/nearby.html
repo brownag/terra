@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,31 +53,39 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for SpatVector</span>
-<span class="fu">nearby</span><span class="op">(</span><span class="va">x</span>, y<span class="op">=</span><span class="cn">NULL</span>, distance<span class="op">=</span><span class="fl">0</span>, k<span class="op">=</span><span class="fl">1</span>, centroids<span class="op">=</span><span class="cn">TRUE</span>, symmetrical<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co"># S4 method for SpatVector</span>
-<span class="fu">nearest</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, pairs<span class="op">=</span><span class="cn">FALSE</span>, centroids<span class="op">=</span><span class="cn">TRUE</span>, lines<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for SpatVector</span></span>
+<span><span class="fu">nearby</span><span class="op">(</span><span class="va">x</span>, y<span class="op">=</span><span class="cn">NULL</span>, distance<span class="op">=</span><span class="fl">0</span>, k<span class="op">=</span><span class="fl">1</span>, centroids<span class="op">=</span><span class="cn">TRUE</span>, symmetrical<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for SpatVector</span></span>
+<span><span class="fu">nearest</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, pairs<span class="op">=</span><span class="cn">FALSE</span>, centroids<span class="op">=</span><span class="cn">TRUE</span>, lines<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatVector</p></dd>
-<dt>y</dt>
+
+  <dt>y</dt>
 <dd><p>SpatVector or NULL</p></dd>
-<dt>distance</dt>
+
+  <dt>distance</dt>
 <dd><p>numeric. maximum distance</p></dd>
-<dt>k</dt>
+
+  <dt>k</dt>
 <dd><p>positive integer. number of neighbors. Ignored if <code>distance &gt; 0</code></p></dd>
-<dt>centroids</dt>
+
+  <dt>centroids</dt>
 <dd><p>logical. Should the centroids of polygons be used?</p></dd>
-<dt>symmetrical</dt>
+
+  <dt>symmetrical</dt>
 <dd><p>logical. If <code>TRUE</code>, a near pair is only included once. That is, if geometry 1 is near to geometry 3, the implied nearness between 3 and 1 is not reported. Ignored if <code>k</code> neighbors are returned</p></dd>
-<dt>pairs</dt>
+
+  <dt>pairs</dt>
 <dd><p>logical. If <code>TRUE</code> pairwise nearest points are returned (only relevant when using at least one SpatVector of lines or polygons</p></dd>
-<dt>lines</dt>
+
+  <dt>lines</dt>
 <dd><p>logical. If <code>TRUE</code> lines between the nearest points instead of (the nearest) points</p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -85,14 +93,16 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>matrix</p>
+    
+
+<p>matrix</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">nearby</span><span class="op">(</span><span class="va">v</span>, distance<span class="op">=</span><span class="fl">12000</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/lux.shp"</span>, package<span class="op">=</span><span class="st">"terra"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">nearby</span><span class="op">(</span><span class="va">v</span>, distance<span class="op">=</span><span class="fl">12000</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      from to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    2  4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    6  8</span>
@@ -110,7 +120,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

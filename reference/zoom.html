@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5-23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
       </span>
     </div>
 
@@ -53,31 +53,39 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for SpatRaster</span>
-<span class="fu">zoom</span><span class="op">(</span><span class="va">x</span>, e<span class="op">=</span><span class="fu"><a href="draw.html">draw</a></span><span class="op">(</span><span class="op">)</span>, maxcell<span class="op">=</span><span class="fl">100000</span>, layer<span class="op">=</span><span class="fl">1</span>, new<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for SpatVector</span>
-<span class="fu">zoom</span><span class="op">(</span><span class="va">x</span>, e<span class="op">=</span><span class="fu"><a href="draw.html">draw</a></span><span class="op">(</span><span class="op">)</span>, new<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for SpatRaster</span></span>
+<span><span class="fu">zoom</span><span class="op">(</span><span class="va">x</span>, e<span class="op">=</span><span class="fu"><a href="draw.html">draw</a></span><span class="op">(</span><span class="op">)</span>, maxcell<span class="op">=</span><span class="fl">100000</span>, layer<span class="op">=</span><span class="fl">1</span>, new<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for SpatVector</span></span>
+<span><span class="fu">zoom</span><span class="op">(</span><span class="va">x</span>, e<span class="op">=</span><span class="fu"><a href="draw.html">draw</a></span><span class="op">(</span><span class="op">)</span>, new<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>SpatRaster</p></dd>
+
 <dt>e</dt>
 <dd><p>SpatExtent</p></dd>
+
 <dt>maxcell</dt>
 <dd><p>positive integer. Maximum number of cells used for the map</p></dd>
+
 <dt>layer</dt>
 <dd><p>positive integer to select the layer to be used</p></dd>
+
 <dt>new</dt>
 <dd><p>logical. If <code>TRUE</code>, the zoomed in map will appear on a new device (window)</p></dd>
+
 <dt>...</dt>
 <dd><p>additional arguments passed to <code><a href="plot.html">plot</a></code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>SpatExtent (invisibly)</p>
+    
+
+<p>SpatExtent (invisibly)</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -96,7 +104,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
