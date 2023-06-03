@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">terra</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-33</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7-34</span>
       </span>
     </div>
 
@@ -239,10 +239,6 @@
         </td>
         <td><p>Convex hull and minimal rotated rectangle</p></td>
       </tr><tr><td>
-          <p><code><a href="coords.html">crds(<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="coords.html">crds(<i>&lt;SpatRaster&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Get the coordinates of SpatVector geometries or SpatRaster cells</p></td>
-      </tr><tr><td>
           <p><code><a href="costDist.html">costDist(<i>&lt;SpatRaster&gt;</i>)</a></code> </p>
         </td>
         <td><p>Cost distance</p></td>
@@ -250,6 +246,10 @@
           <p><code><a href="cover.html">cover(<i>&lt;SpatRaster&gt;</i>,<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="cover.html">cover(<i>&lt;SpatVector&gt;</i>,<i>&lt;SpatVector&gt;</i>)</a></code> </p>
         </td>
         <td><p>Replace values with values from another object</p></td>
+      </tr><tr><td>
+          <p><code><a href="crds.html">crds(<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="crds.html">crds(<i>&lt;SpatRaster&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Get the coordinates of SpatVector geometries or SpatRaster cells</p></td>
       </tr><tr><td>
           <p><code><a href="crop.html">crop(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="crop.html">crop(<i>&lt;SpatRasterDataset&gt;</i>)</a></code> <code><a href="crop.html">crop(<i>&lt;SpatRasterCollection&gt;</i>)</a></code> <code><a href="crop.html">crop(<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="crop.html">crop(<i>&lt;SpatGraticule&gt;</i>)</a></code> </p>
         </td>
@@ -839,7 +839,7 @@
         </td>
         <td><p>summary</p></td>
       </tr><tr><td>
-          <p><code><a href="svc.html">svc(<i>&lt;missing&gt;</i>)</a></code> <code><a href="svc.html">svc(<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="svc.html">svc(<i>&lt;list&gt;</i>)</a></code> </p>
+          <p><code><a href="svc.html">svc(<i>&lt;missing&gt;</i>)</a></code> <code><a href="svc.html">svc(<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="svc.html">svc(<i>&lt;list&gt;</i>)</a></code> <code><a href="svc.html">svc(<i>&lt;character&gt;</i>)</a></code> </p>
         </td>
         <td><p>Create a SpatVectorCollection</p></td>
       </tr><tr><td>
@@ -950,6 +950,10 @@
           <p><code><a href="wrap.html">wrap(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="wrap.html">wrap(<i>&lt;SpatRasterDataset&gt;</i>)</a></code> <code><a href="wrap.html">wrap(<i>&lt;SpatRasterCollection&gt;</i>)</a></code> <code><a href="wrap.html">wrap(<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="wrap.html">unwrap(<i>&lt;ANY&gt;</i>)</a></code> </p>
         </td>
         <td><p>wrap and unwrap</p></td>
+      </tr><tr><td>
+          <p><code><a href="wrapCache.html">wrapCache(<i>&lt;SpatRaster&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>SpatRaster wrap with caching options</p></td>
       </tr><tr><td>
           <p><code><a href="writeCDF.html">writeCDF(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="writeCDF.html">writeCDF(<i>&lt;SpatRasterDataset&gt;</i>)</a></code> </p>
         </td>
