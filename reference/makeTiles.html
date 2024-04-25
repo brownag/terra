@@ -12,7 +12,7 @@ getTileExtents returns the extents of the (virtual) tiles, while makeTiles creat
     
     <a class="navbar-brand me-2" href="../index.html">terra</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7-74</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7-75</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,11 +113,11 @@ getTileExtents returns the extents of the (virtual) tiles, while makeTiles creat
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="rast.html">rast</a></span><span class="op">(</span>ncols<span class="op">=</span><span class="fl">2</span>, nrows<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">getTileExtents</span><span class="op">(</span><span class="va">r</span>, <span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      xmin xmax ymin ymax</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -180    0    0   90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    0  180    0   90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] -180    0  -90    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]    0  180  -90    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               xmin         xmax          ymin         ymax</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -1.800000e+02 4.440892e-15 -2.220446e-15 9.000000e+01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  4.440892e-15 1.800000e+02 -2.220446e-15 9.000000e+01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] -1.800000e+02 4.440892e-15 -9.000000e+01 2.220446e-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]  4.440892e-15 1.800000e+02 -9.000000e+01 2.220446e-15</span>
 <span class="r-in"><span><span class="fu">getTileExtents</span><span class="op">(</span><span class="va">r</span>, <span class="va">x</span>, buffer<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        xmin  xmax  ymin ymax</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -180.0  10.8  -5.4 90.0</span>
@@ -129,10 +129,10 @@ getTileExtents returns the extents of the (virtual) tiles, while makeTiles creat
 <span class="r-in"><span><span class="va">filename</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"_.tif"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ff</span> <span class="op">&lt;-</span> <span class="fu">makeTiles</span><span class="op">(</span><span class="va">r</span>, <span class="va">x</span>, <span class="va">filename</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ff</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/var/folders/c9/jqpw9nhs7jj7vm5185nyw05h0000gn/T//RtmpTaLARB/file52026144717b_1.tif"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "/var/folders/c9/jqpw9nhs7jj7vm5185nyw05h0000gn/T//RtmpTaLARB/file52026144717b_2.tif"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "/var/folders/c9/jqpw9nhs7jj7vm5185nyw05h0000gn/T//RtmpTaLARB/file52026144717b_3.tif"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "/var/folders/c9/jqpw9nhs7jj7vm5185nyw05h0000gn/T//RtmpTaLARB/file52026144717b_4.tif"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/var/folders/3m/p59k4qdj0f17st0gn2cmj3640000gn/T//RtmpBeHBqG/file3860722d7e5d_1.tif"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "/var/folders/3m/p59k4qdj0f17st0gn2cmj3640000gn/T//RtmpBeHBqG/file3860722d7e5d_2.tif"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "/var/folders/3m/p59k4qdj0f17st0gn2cmj3640000gn/T//RtmpBeHBqG/file3860722d7e5d_3.tif"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "/var/folders/3m/p59k4qdj0f17st0gn2cmj3640000gn/T//RtmpBeHBqG/file3860722d7e5d_4.tif"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="vrt.html">vrt</a></span><span class="op">(</span><span class="va">ff</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> class       : SpatRaster </span>
@@ -140,8 +140,8 @@ getTileExtents returns the extents of the (virtual) tiles, while makeTiles creat
 <span class="r-out co"><span class="r-pr">#&gt;</span> resolution  : 3.6, 1.8  (x, y)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> extent      : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> coord. ref. : lon/lat WGS 84 (EPSG:4326) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> source      : spat_52022cc20c32_20994.vrt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> name        : spat_52022cc20c32_20994 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> source      : spat_38604c37cffb_14432.vrt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> name        : spat_38604c37cffb_14432 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> min value   :                       1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> max value   :                   10000 </span>
 </code></pre></div>

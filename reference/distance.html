@@ -40,7 +40,7 @@ If y is missing, the distance between each points in x with all other points in 
     
     <a class="navbar-brand me-2" href="../index.html">terra</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7-74</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7-75</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,10 +115,10 @@ If y is missing, the distance between each points in x with all other points in 
 <span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, pairwise<span class="op">=</span><span class="cn">FALSE</span>, unit<span class="op">=</span><span class="st">"m"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for matrix,matrix</span></span>
-<span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">lonlat</span>, pairwise<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">lonlat</span>, pairwise<span class="op">=</span><span class="cn">FALSE</span>, unit<span class="op">=</span><span class="st">"m"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for matrix,missing</span></span>
-<span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">lonlat</span>, sequential<span class="op">=</span><span class="cn">FALSE</span>, pairs<span class="op">=</span><span class="cn">FALSE</span>, symmetrical<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">lonlat</span>, sequential<span class="op">=</span><span class="cn">FALSE</span>, pairs<span class="op">=</span><span class="cn">FALSE</span>, symmetrical<span class="op">=</span><span class="cn">TRUE</span>, unit<span class="op">=</span><span class="st">"m"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -174,8 +174,7 @@ If y is missing, the distance between each points in x with all other points in 
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
-    <p>The distance unit is in meters.</p>
-<p>A distance matrix can be coerced into a matrix with <code>as.matrix</code></p>
+    <p>A distance matrix can be coerced into a regular matrix with <code>as.matrix</code></p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
