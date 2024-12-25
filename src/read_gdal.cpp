@@ -1172,6 +1172,7 @@ bool SpatRaster::constructFromFile(std::string fname, std::vector<int> subds, st
 		s.names[i] = nm;
 	}
 
+	// internal file metadata takes precedence
 	if (s.hasTime) {
 		if (datm[0].find('T') != std::string::npos) {
 			s.timestep = "seconds";
@@ -1203,7 +1204,14 @@ bool SpatRaster::constructFromFile(std::string fname, std::vector<int> subds, st
 		for (size_t i=0; i<datm.size(); i++) {
 			s.time[i] = parse_time(datm[i]);
 		}
-	} else {
+	}
+	
+	if (s.hasUnit) {
+		s.unit = unts;
+	}
+	
+	// fill metadata from aux.json if needed
+	if (!s.hasTime || !s.hasUnit) {
 		std::vector<int_64> timestamps;
 		std::string timestep="raw";
 		std::vector<std::string> units;
@@ -1214,20 +1222,17 @@ bool SpatRaster::constructFromFile(std::string fname, std::vector<int> subds, st
 			units.resize(0);
 			addWarning("could not parse aux.json");
 		}
-		if (!timestamps.empty()) {
+		if (!s.hasTime && !timestamps.empty()) {
 			s.time = timestamps;
 			s.timestep = timestep;
 			s.hasTime = true;
 		}
-		if (!units.empty()) {
+		if (!s.hasUnit && !units.empty()) {
 			s.unit = units;
 			s.hasUnit = true;
 		}
 	}
-	if (s.hasUnit) {
-		s.unit = unts;
-	}
-
+	
 	msg = "";
 	std::vector<std::string> metadata;
 
