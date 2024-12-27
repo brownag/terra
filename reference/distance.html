@@ -4,14 +4,12 @@
 If x is a SpatRaster:
 If y is missing this method computes the distance, for all cells that are NA in SpatRaster x to the nearest cell that is not NA (or other values, see arguments "target" and "exclude").
 If y is a numeric value, the cells with that value are ignored. That is, distance to or from these cells is not computed (only if grid=FALSE).
-If y is a SpatVector, the distance to that SpatVector is computed for all cells. For lines and polygons this is done after rasterization; and only the overlapping areas of the vector and raster are considered (for now).
+If y is a SpatVector, the distance to that SpatVector is computed for all cells, optionally after rasterization.
 The distance is always expressed in meter if the coordinate reference system is longitude/latitude, and in map units otherwise. Map units are typically meter, but inspect crs(x) if in doubt.
 Results are more precise, sometimes much more precise, when using longitude/latitude rather than a planar coordinate reference system, as these distort distance.
 If x is a SpatVector:
 If y is missing, a distance matrix between all objects in x is computed. A distance matrix object of class "dist" is returned.
 If y is a SpatVector the geographic distance between all objects is computed (and a matrix is returned). If both sets have the same number of points, and pairwise=TRUE, the distance between each pair of objects is computed, and a vector is returned.
-The distance is always expressed in meter, except when the coordinate reference system is longitude/latitude AND one of the SpatVector(s) consists of lines or polygons. In that case the distance is in degrees, and thus not very useful (this will be fixed soon). Otherwise, results are more precise, sometimes much more precise, when using longitude/latitude rather than a planar coordinate reference system, as these distort distance.
-
 If x is a matrix:
 x should consist of two columns, the first with "x" (or longitude) and the second with "y" coordinates (or latitude). If y is a also a matrix, the distance between each points in x and all points in y is computed, unless pairwise=TRUE
 If y is missing, the distance between each points in x with all other points in x is computed, unless sequential=TRUE'><meta property="og:description" content='
@@ -19,14 +17,12 @@ If y is missing, the distance between each points in x with all other points in 
 If x is a SpatRaster:
 If y is missing this method computes the distance, for all cells that are NA in SpatRaster x to the nearest cell that is not NA (or other values, see arguments "target" and "exclude").
 If y is a numeric value, the cells with that value are ignored. That is, distance to or from these cells is not computed (only if grid=FALSE).
-If y is a SpatVector, the distance to that SpatVector is computed for all cells. For lines and polygons this is done after rasterization; and only the overlapping areas of the vector and raster are considered (for now).
+If y is a SpatVector, the distance to that SpatVector is computed for all cells, optionally after rasterization.
 The distance is always expressed in meter if the coordinate reference system is longitude/latitude, and in map units otherwise. Map units are typically meter, but inspect crs(x) if in doubt.
 Results are more precise, sometimes much more precise, when using longitude/latitude rather than a planar coordinate reference system, as these distort distance.
 If x is a SpatVector:
 If y is missing, a distance matrix between all objects in x is computed. A distance matrix object of class "dist" is returned.
 If y is a SpatVector the geographic distance between all objects is computed (and a matrix is returned). If both sets have the same number of points, and pairwise=TRUE, the distance between each pair of objects is computed, and a vector is returned.
-The distance is always expressed in meter, except when the coordinate reference system is longitude/latitude AND one of the SpatVector(s) consists of lines or polygons. In that case the distance is in degrees, and thus not very useful (this will be fixed soon). Otherwise, results are more precise, sometimes much more precise, when using longitude/latitude rather than a planar coordinate reference system, as these distort distance.
-
 If x is a matrix:
 x should consist of two columns, the first with "x" (or longitude) and the second with "y" coordinates (or latitude). If y is a also a matrix, the distance between each points in x and all points in y is computed, unless pairwise=TRUE
 If y is missing, the distance between each points in x with all other points in x is computed, unless sequential=TRUE'><meta property="og:image" content="https://rspatial.github.io/terra/logo.png"></head><body>
@@ -70,14 +66,12 @@ If y is missing, the distance between each points in x with all other points in 
 <p>If <code>x</code> is a <b>SpatRaster</b>:</p>
 <p>If <code>y</code> is <code>missing</code> this method computes the distance, for all cells that are <code>NA</code> in SpatRaster <code>x</code> to the nearest cell that is not <code>NA</code> (or other values, see arguments "target" and "exclude").</p>
 <p>If <code>y</code> is a numeric value, the cells with that value are ignored. That is, distance to or from these cells is not computed (only if <code>grid=FALSE</code>).</p>
-<p>If <code>y</code> is a SpatVector, the distance to that SpatVector is computed for all cells. For lines and polygons this is done after rasterization; and only the overlapping areas of the vector and raster are considered (for now).</p>
+<p>If <code>y</code> is a SpatVector, the distance to that SpatVector is computed for all cells, optionally after rasterization.</p>
 <p>The distance is always expressed in meter if the coordinate reference system is longitude/latitude, and in map units otherwise. Map units are typically meter, but inspect <code>crs(x)</code> if in doubt.</p>
 <p>Results are more precise, sometimes much more precise, when using longitude/latitude rather than a planar coordinate reference system, as these distort distance.</p>
 <p>If <code>x</code> is a <b>SpatVector</b>:</p>
 <p>If <code>y</code> is <code>missing</code>, a distance matrix between all objects in <code>x</code> is computed. A distance matrix object of class "dist" is returned.</p>
 <p>If <code>y</code> is a SpatVector the geographic distance between all objects is computed (and a matrix is returned). If both sets have the same number of points, and <code>pairwise=TRUE</code>, the distance between each pair of objects is computed, and a vector is returned.</p>
-<p>The distance is always expressed in meter, except when the coordinate reference system is longitude/latitude AND one of the SpatVector(s) consists of lines or polygons. In that case the distance is in degrees, and thus not very useful (this will be fixed soon). Otherwise, results are more precise, sometimes much more precise, when using longitude/latitude rather than a planar coordinate reference system, as these distort distance.</p>
-
 <p>If <code>x</code> is a <b>matrix</b>:</p>
 <p><code>x</code> should consist of two columns, the first with "x" (or longitude) and the second with "y" coordinates (or latitude). If <code>y</code> is a also a matrix, the distance between each points in <code>x</code> and all points in <code>y</code> is computed, unless <code>pairwise=TRUE</code></p>
 <p>If <code>y</code> is missing, the distance between each points in <code>x</code> with all other points in <code>x</code> is computed, unless <code>sequential=TRUE</code></p>
@@ -89,13 +83,13 @@ If y is missing, the distance between each points in x with all other points in 
 <span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, target<span class="op">=</span><span class="cn">NA</span>, exclude<span class="op">=</span><span class="cn">NULL</span>, unit<span class="op">=</span><span class="st">"m"</span>, method<span class="op">=</span><span class="st">"haversine"</span>, filename<span class="op">=</span><span class="st">""</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for class 'SpatRaster,SpatVector'</span></span>
-<span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, unit<span class="op">=</span><span class="st">"m"</span>, rasterize<span class="op">=</span><span class="cn">FALSE</span>, method<span class="op">=</span><span class="st">"haversine"</span>, filename<span class="op">=</span><span class="st">""</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, unit<span class="op">=</span><span class="st">"m"</span>, rasterize<span class="op">=</span><span class="cn">FALSE</span>, method<span class="op">=</span><span class="st">"cosine"</span>, filename<span class="op">=</span><span class="st">""</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for class 'SpatVector,ANY'</span></span>
-<span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, sequential<span class="op">=</span><span class="cn">FALSE</span>, pairs<span class="op">=</span><span class="cn">FALSE</span>, symmetrical<span class="op">=</span><span class="cn">TRUE</span>, unit<span class="op">=</span><span class="st">"m"</span>, method<span class="op">=</span><span class="st">"geo"</span><span class="op">)</span></span>
+<span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, sequential<span class="op">=</span><span class="cn">FALSE</span>, pairs<span class="op">=</span><span class="cn">FALSE</span>, symmetrical<span class="op">=</span><span class="cn">TRUE</span>, unit<span class="op">=</span><span class="st">"m"</span>, method<span class="op">=</span><span class="st">"cosine"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for class 'SpatVector,SpatVector'</span></span>
-<span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, pairwise<span class="op">=</span><span class="cn">FALSE</span>, unit<span class="op">=</span><span class="st">"m"</span>, method<span class="op">=</span><span class="st">"geo"</span><span class="op">)</span></span>
+<span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, pairwise<span class="op">=</span><span class="cn">FALSE</span>, unit<span class="op">=</span><span class="st">"m"</span>, method<span class="op">=</span><span class="st">"cosine"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for class 'matrix,matrix'</span></span>
 <span><span class="fu">distance</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">lonlat</span>, pairwise<span class="op">=</span><span class="cn">FALSE</span>, unit<span class="op">=</span><span class="st">"m"</span>, method<span class="op">=</span><span class="st">"geo"</span><span class="op">)</span></span>
@@ -124,7 +118,7 @@ If y is missing, the distance between each points in x with all other points in 
 <dd><p>character. Can be either "m" or "km"</p></dd>
 
   <dt id="arg-method">method<a class="anchor" aria-label="anchor" href="#arg-method"></a></dt>
-<dd><p>character. One of "geo", "haversine", "cosine". With "geo" the most precise but slower method of Karney (2003) is used. The other two methods are faster but less precise</p></dd>
+<dd><p>character. One of "geo", "cosine" or "haversine" (the latter cannot be used for distances to lines or polygons). With "geo" the most precise but slower method of Karney (2003) is used. The other two methods are faster but less precise</p></dd>
 
   <dt id="arg-rasterize">rasterize<a class="anchor" aria-label="anchor" href="#arg-rasterize"></a></dt>
 <dd><p>logical. If <code>TRUE</code> distance is computed from the cells covered by the geometries after rasterization. This can be much faster in some cases</p></dd>
@@ -153,7 +147,7 @@ If y is missing, the distance between each points in x with all other points in 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>SpatRaster or numeric or matrix or distance matrix (object of class "dist")</p>
+    <p>SpatRaster, numeric, matrix, or a distance matrix (object of class "dist")</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
@@ -193,24 +187,24 @@ If y is missing, the distance between each points in x with all other points in 
 <span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">distance</span><span class="op">(</span><span class="va">p1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">d</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          1        2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 10014577         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 10014577 20003931</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 10018754         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 10018754 20037508</span>
 <span class="r-in"><span><span class="fu"><a href="coerce.html">as.matrix</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          1        2        3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        0 10014577 10014577</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 10014577        0 20003931</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 10014577 20003931        0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        0 10018754 10018754</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 10018754        0 20037508</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 10018754 20037508        0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="vect.html">vect</a></span><span class="op">(</span><span class="fu"><a href="c.html">rbind</a></span><span class="op">(</span><span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">30</span>,<span class="op">-</span><span class="fl">30</span><span class="op">)</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="fl">25</span>,<span class="fl">40</span><span class="op">)</span>, <span class="fu"><a href="c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">9</span>,<span class="op">-</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>, crs<span class="op">=</span><span class="st">"+proj=longlat +datum=WGS84"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu">distance</span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">dd</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]     [,2]     [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  4596223  5104507  1054933</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  9192445  5905838 11048088</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 10825924 14117180  8981037</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  4609698  5124121  1055634</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  9219396  5900335 11053086</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 10818112 14137173  8984422</span>
 <span class="r-in"><span><span class="va">pd</span> <span class="op">&lt;-</span> <span class="fu">distance</span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span>, pairwise<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pd</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4596223 5905838 8981037</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4609698 5900335 8984422</span>
 <span class="r-in"><span><span class="va">pd</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">dd</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE TRUE TRUE</span>
 <span class="r-in"><span></span></span>
