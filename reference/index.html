@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">terra</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8-7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8-11</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -207,7 +207,7 @@
         <dd>Bar plot of a SpatRaster</dd>
       </dl><dl><dt>
 
-          <code><a href="bestMatch.html">bestMatch(<i>&lt;SpatRaster&gt;</i>,<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="bestMatch.html">bestMatch(<i>&lt;SpatRaster&gt;</i>,<i>&lt;data.frame&gt;</i>)</a></code>
+          <code><a href="bestMatch.html">bestMatch(<i>&lt;SpatRaster&gt;</i>,<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="bestMatch.html">bestMatch(<i>&lt;SpatRaster&gt;</i>,<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="bestMatch.html">bestMatch(<i>&lt;SpatRaster&gt;</i>,<i>&lt;matrix&gt;</i>)</a></code>
 
         </dt>
         <dd>bestMatch</dd>
@@ -345,10 +345,10 @@
         <dd>Contour plot</dd>
       </dl><dl><dt>
 
-          <code><a href="convhull.html">convHull(<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="convhull.html">minRect(<i>&lt;SpatVector&gt;</i>)</a></code> <code><a href="convhull.html">minCircle(<i>&lt;SpatVector&gt;</i>)</a></code>
+          <code><a href="convhull.html">hull(<i>&lt;SpatVector&gt;</i>)</a></code>
 
         </dt>
-        <dd>Convex hull, minimal bounding rotated rectangle, and minimal bounding circle</dd>
+        <dd>Convex, concave, rectangular and circular hulls</dd>
       </dl><dl><dt>
 
           <code><a href="costDist.html">costDist(<i>&lt;SpatRaster&gt;</i>)</a></code>
@@ -357,7 +357,7 @@
         <dd>Cost-distance</dd>
       </dl><dl><dt>
 
-          <code><a href="cover.html">cover(<i>&lt;SpatRaster&gt;</i>,<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="cover.html">cover(<i>&lt;SpatVector&gt;</i>,<i>&lt;SpatVector&gt;</i>)</a></code>
+          <code><a href="cover.html">cover(<i>&lt;SpatRaster&gt;</i>,<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="cover.html">cover(<i>&lt;SpatRaster&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="cover.html">cover(<i>&lt;SpatVector&gt;</i>,<i>&lt;SpatVector&gt;</i>)</a></code>
 
         </dt>
         <dd>Replace values with values from another object</dd>
@@ -423,7 +423,7 @@
         <dd>depth of SpatRaster layers</dd>
       </dl><dl><dt>
 
-          <code><a href="describe.html">describe(<i>&lt;character&gt;</i>)</a></code>
+          <code><a href="describe.html">describe(<i>&lt;character&gt;</i>)</a></code> <code><a href="describe.html">describe(<i>&lt;SpatRaster&gt;</i>)</a></code>
 
         </dt>
         <dd>describe</dd>
@@ -525,7 +525,7 @@
         <dd>Extract values for a range of layers from a SpatRaster</dd>
       </dl><dl><dt>
 
-          <code><a href="factors.html">levels(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">`levels&lt;-`(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">cats(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">categories(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">droplevels(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">addCats(<i>&lt;SpatRaster&gt;</i>)</a></code>
+          <code><a href="factors.html">levels(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">`levels&lt;-`(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">cats(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">categories(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">droplevels(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">addCats(<i>&lt;SpatRaster&gt;</i>)</a></code> <code><a href="factors.html">combineLevels()</a></code>
 
         </dt>
         <dd>Categorical rasters</dd>
@@ -615,7 +615,7 @@
         <dd>Find gaps between polygons</dd>
       </dl><dl><dt>
 
-          <code><a href="gdal.html">gdal()</a></code> <code><a href="gdal.html">gdalCache()</a></code> <code><a href="gdal.html">setGDALconfig()</a></code> <code><a href="gdal.html">getGDALconfig()</a></code>
+          <code><a href="gdal.html">gdal()</a></code> <code><a href="gdal.html">gdalCache()</a></code> <code><a href="gdal.html">setGDALconfig()</a></code> <code><a href="gdal.html">getGDALconfig()</a></code> <code><a href="gdal.html">libVersion()</a></code>
 
         </dt>
         <dd>GDAL version, supported file formats, and cache size</dd>
@@ -987,7 +987,7 @@
         <dd>Plot with leaflet</dd>
       </dl><dl><dt>
 
-          <code><a href="plot.html">plot(<i>&lt;SpatRaster&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatRaster&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatRaster&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatVector&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatVector&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatVector&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatVectorCollection&gt;</i>,<i>&lt;missing&gt;</i>)</a></code>
+          <code><a href="plot.html">plot(<i>&lt;SpatRaster&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatRaster&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatRaster&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatVector&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatVector&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatVector&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatVectorCollection&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;SpatVectorCollection&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code>
 
         </dt>
         <dd>Make a map</dd>
@@ -1509,7 +1509,7 @@
         <dd>Voronoi diagram and Delaunay triangles</dd>
       </dl><dl><dt>
 
-          <code><a href="vrt.html">vrt(<i>&lt;character&gt;</i>)</a></code>
+          <code><a href="vrt.html">vrt(<i>&lt;character&gt;</i>)</a></code> <code><a href="vrt.html">vrt(<i>&lt;SpatRasterCollection&gt;</i>)</a></code>
 
         </dt>
         <dd>Virtual Raster Dataset</dd>
