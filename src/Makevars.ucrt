@@ -5,12 +5,21 @@ ifeq (,$(shell pkg-config --version 2>/dev/null))
 -fopenmp -lgdal -larmadillo -lopenblas -lgfortran -lquadmath -lpq -lpgcommon -lpgport -lodbc32 -lodbccp32 -lblosc -lkea -lhdf5_cpp -lhdf5 -lpoppler -llcms2 -lfreetype -lharfbuzz -lfreetype -llz4 -lpcre2-8 -lxml2 -lopenjp2 -lnetcdf -lmysqlclient -lspatialite -lgeos_c -lgeos -lminizip -lgeos -ljson-c -lgta -lfreexl -lexpat -lssl -lpsapi -lgif -lmfhdf -lhdf5_hl -lcrypto -lportablexdr -ldf -lhdf5 -lsz -lpng16 -lpng -lpoppler -llcms2 -lfreetype -lharfbuzz -lfreetype -llz4 -lpcre2-8 -lpcre -lcurl -lbcrypt -lrtmp -lssl -lssh2 -lidn2 -lunistring -liconv -lgcrypt -lcrypto -lgpg-error -lws2_32 -ltiff -llzma -ljpeg -lz -lcfitsio -lzstd -lwebpdecoder -lwebp $(LIBSHARPYUV) -lsbml-static -lgeotiff -lproj -lsqlite3 -lbz2 -lcrypt32 -lwldap32 -lsecur32
 # -ltbb_static
 else
-  PKG_LIBS = $(shell pkg-config --libs gdal geos proj)
-  PKG_LIBS += -ltbb12
-  PKG_CXXFLAGS += -DHAVE_TBB 
+  PKG_LIBS := $(shell pkg-config --libs gdal geos proj)
+
+  TBB_LIBS := $(shell \
+    if pkg-config --exists tbb12 2>/dev/null; then pkg-config --libs tbb12; \
+    elif pkg-config --exists tbb 2>/dev/null; then pkg-config --libs tbb; \
+    else echo ""; fi)
+
+  PKG_LIBS := $(TBB_LIBS) $(PKG_LIBS)
+
+  ifneq ($(strip $(TBB_LIBS)),)
+    PKG_CXXFLAGS += -DHAVE_TBB
+  endif
 endif
 
-#PKG_CXXFLAGS += -Wconversion -Wno-sign-conversion 
+#PKG_CXXFLAGS += -Wconversion -Wno-sign-conversion
 
 CXX_STD = CXX
 
@@ -21,7 +30,7 @@ winlibs:
 	cp -r "$(R_TOOLS_SOFT)/share/proj" ../inst/
 
 clean:
-	rm -f $(SHLIB) $(OBJECTS)
+	rm -f "$(SHLIB)" $(OBJECTS)
 
 .PHONY: all winlibs clean
 
