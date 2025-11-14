@@ -25,7 +25,7 @@ jobs:
           - {os: windows-2025,   r: 'oldrel-2'}
           - {os: windows-2025,   r: 'oldrel-3'}
           - {os: windows-2025,   r: 'oldrel-4'}
-          
+
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
@@ -44,6 +44,17 @@ jobs:
       - name: Install macOS system dependencies
         if: runner.os == 'macOS'
         run: brew install gdal proj netcdf tbb
+
+      - name: Install Windows MSYS2 dependencies
+        if: runner.os == 'Windows'
+        uses: msys2/setup-msys2@v2
+        with:
+          packages: |
+            mingw-w64-x86_64-gdal
+            mingw-w64-x86_64-geos
+            mingw-w64-x86_64-proj
+            mingw-w64-x86_64-openssl
+            mingw-w64-x86_64-libcurl
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
