@@ -72,15 +72,15 @@ numeric or data.frame
 
 ``` r
 r <- rast(system.file("ex/logo.tif", package="terra"))   
-xy <- data.frame(lon=c(50,80), lat=c(30, 60))
+xy <- data.frame(x=c(50,80), y=c(30, 60))
 extract(r, xy)
 #>   ID red green blue
 #> 1  1 149   158  215
 #> 2  2  68    67   63
 extract(r, xy, layer=c("red", "green"))
-#>   ID layer value
-#> 1  1   red   149
-#> 2  2 green    67
+#>   ID value
+#> 1  1   149
+#> 2  2    67
 
 extractRange(r, xy, first=1:2, last=3:2)
 #> [[1]]

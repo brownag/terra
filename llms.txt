@@ -304,7 +304,11 @@ updates/improvements on the above instructions.
   : Get cell numbers
 
 - [`centroids(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/centroids.md)
+  [`centroids(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/centroids.md)
   : Centroids
+
+- [`chunk(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/chunk.md)
+  : Make a SpatRaster method memory-safe
 
 - [`clamp(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/clamp.md)
   [`clamp(`*`<numeric>`*`)`](https://rspatial.github.io/terra/reference/clamp.md)
@@ -511,7 +515,8 @@ updates/improvements on the above instructions.
   : Categorical rasters
 
 - [`fillHoles(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/fill.md)
-  : Remove holes from polygons
+  [`fillHoles(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/fill.md)
+  : Remove or extract holes from polygons, or fill holes in raster data
 
 - [`fillTime(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/fillTime.md)
   : Fill time gaps in a SpatRaster

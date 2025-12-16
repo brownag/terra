@@ -20,8 +20,8 @@ approximately regular sample for the cells that are not `NA`.
 ``` r
 # S4 method for class 'SpatRaster'
 spatSample(x, size, method="random", replace=FALSE, na.rm=FALSE, 
-    as.raster=FALSE, as.df=TRUE, as.points=FALSE, values=hasValues(x), cells=FALSE, 
-    xy=FALSE, ext=NULL, warn=TRUE, weights=NULL, exp=5, exhaustive=FALSE, 
+    as.raster=FALSE, as.df=TRUE, as.points=FALSE, as.mask=FALSE, values=hasValues(x), 
+  cells=FALSE, xy=FALSE, ext=NULL, warn=TRUE, weights=NULL, exp=5, exhaustive=FALSE, 
   exact=FALSE, each=TRUE, ...)
 
 # S4 method for class 'SpatVector'
@@ -76,6 +76,12 @@ spatSample(x, size, method="random", lonlat, as.points=FALSE, exact=FALSE)
 - as.points:
 
   logical. If `TRUE`, a SpatVector of points is returned
+
+- as.mask:
+
+  logical. If `TRUE` `x` is returned, with its values "masked" by the
+  sample. That is, only cells that are included in the sample retain
+  their values
 
 - values:
 
