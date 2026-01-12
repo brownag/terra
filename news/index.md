@@ -1,6 +1,18 @@
 # Changelog
 
-## version 1.8-92
+## version 1.8-94
+
+### bug fixes
+
+### enhancements
+
+### new
+
+## version 1.8-93
+
+CRAN release: 2026-01-12
+
+Released 2025-01-12
 
 ### bug fixes
 
