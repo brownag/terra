@@ -38,10 +38,56 @@ SpatRaster SpatRaster::lookup_apply(std::vector<double> from_vals, std::vector<d
 		}
 	}
 
-	SpatHashMap<double, double> lookup_map;
-	for (size_t j = 0; j < from_vals.size(); j++) {
-		lookup_map[from_vals[j]] = to_vals[j];
+	bool use_direct_lut = false;
+	int min_v = 0;
+	int max_v = 0;
+	if (from_vals.size() > 0) {
+		min_v = (int)from_vals[0];
+		max_v = (int)from_vals[0];
+		bool all_int = true;
+		for(double d : from_vals) {
+			if (std::isnan(d) || std::floor(d) != d) {
+				all_int = false; break;
+			}
+			if (d < 0) { all_int = false; break; }
+			if (d < min_v) min_v = (int)d;
+			if (d > max_v) max_v = (int)d;
+		}
+		if (all_int) {
+			size_t max_idx = (size_t)max_v;
+			double mem_req_bytes = (double)max_idx * 8.0 + (double)max_idx / 8.0;
+			double mem_budget_bytes;
+			double opt_memmax = opt.get_memmax();
+			if (opt_memmax > 0) {
+				mem_budget_bytes = opt_memmax * 8.0;
+			} else {
+				mem_budget_bytes = 1024.0 * 1024.0 * 1024.0; // 1 GB default
+			}
+
+			if (mem_req_bytes < mem_budget_bytes) {
+				use_direct_lut = true;
+			}
+		}
 	}
+
+	std::vector<double> lut;
+	std::vector<bool> lut_set;
+	SpatHashMap<double, double> lookup_map;
+
+	if (use_direct_lut) {
+		lut.resize(max_v + 1);
+		lut_set.assign(max_v + 1, false);
+		for (size_t j = 0; j < from_vals.size(); j++) {
+			int idx = (int)from_vals[j];
+			lut[idx] = to_vals[j];
+			lut_set[idx] = true;
+		}
+	} else {
+		for (size_t j = 0; j < from_vals.size(); j++) {
+			lookup_map[from_vals[j]] = to_vals[j];
+		}
+	}
+
 	if (!readStart()) {
 		out.setError(getError());
 		return out;
@@ -56,12 +102,28 @@ SpatRaster SpatRaster::lookup_apply(std::vector<double> from_vals, std::vector<d
 		v.clear();
 		readBlock(v, out.bs, i);
 
-		for (size_t j = 0; j < v.size(); j++) {
-			auto it = lookup_map.find(v[j]);
-			if (it != lookup_map.end()) {
-				v[j] = it->second;
-			} else if (others) {
-				v[j] = othersValue;
+		if (use_direct_lut) {
+			for (size_t j = 0; j < v.size(); j++) {
+				double val = v[j];
+				if (!std::isnan(val) && val >= 0 && val <= max_v && val == std::floor(val)) {
+					int idx = (int)val;
+					if (lut_set[idx]) {
+						v[j] = lut[idx];
+					} else if (others) {
+						v[j] = othersValue;
+					}
+				} else if (others) {
+					v[j] = othersValue;
+				}
+			}
+		} else {
+			for (size_t j = 0; j < v.size(); j++) {
+				auto it = lookup_map.find(v[j]);
+				if (it != lookup_map.end()) {
+					v[j] = it->second;
+				} else if (others) {
+					v[j] = othersValue;
+				}
 			}
 		}
 
