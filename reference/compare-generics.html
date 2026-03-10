@@ -5,7 +5,7 @@ Standard comparison and logical operators for computations with SpatRasters. Com
 Logical: !, &amp;amp;, |, isTRUE, isFALSE
 Compare:  ==, !=, &amp;gt;, &amp;lt;,  &amp;lt;=, &amp;gt;=, is.na, is.nan, is.finite, is.infinite
 See not.na for the inverse of is.na, and noNA to detect cells with missing value across layers.
-The compare and logic methods implement these operators in a method that can return NA istead of FALSE and allows for setting an output filename.
+The compare and logic methods implement these operators in a method that can return NA instead of FALSE and allows for setting an output filename.
 The terra package does not distinguish between NA (not available) and NaN (not a number). In most cases this state is represented by NaN.
 If you use a SpatRaster with a vector of multiple numbers, each element in the vector is considered a layer (with a constant value). If you use a SpatRaster with a matrix, the number of columns of the matrix must match the number of layers of the SpatRaster. The rows are used to match the cells. That is, if there are two rows, these match cells 1 and 2, and they are recycled to 3 and 4, etc.
 The following method has been implemented for (SpatExtent, SpatExtent): =="><meta property="og:description" content="
@@ -14,7 +14,7 @@ Standard comparison and logical operators for computations with SpatRasters. Com
 Logical: !, &amp;amp;, |, isTRUE, isFALSE
 Compare:  ==, !=, &amp;gt;, &amp;lt;,  &amp;lt;=, &amp;gt;=, is.na, is.nan, is.finite, is.infinite
 See not.na for the inverse of is.na, and noNA to detect cells with missing value across layers.
-The compare and logic methods implement these operators in a method that can return NA istead of FALSE and allows for setting an output filename.
+The compare and logic methods implement these operators in a method that can return NA instead of FALSE and allows for setting an output filename.
 The terra package does not distinguish between NA (not available) and NaN (not a number). In most cases this state is represented by NaN.
 If you use a SpatRaster with a vector of multiple numbers, each element in the vector is considered a layer (with a constant value). If you use a SpatRaster with a matrix, the number of columns of the matrix must match the number of layers of the SpatRaster. The rows are used to match the cells. That is, if there are two rows, these match cells 1 and 2, and they are recycled to 3 and 4, etc.
 The following method has been implemented for (SpatExtent, SpatExtent): =="><meta property="og:image" content="https://rspatial.github.io/terra/logo.png"></head><body>
@@ -25,7 +25,7 @@ The following method has been implemented for (SpatExtent, SpatExtent): =="><met
 
     <a class="navbar-brand me-2" href="../index.html">terra</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8-95</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.9-3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +59,7 @@ The following method has been implemented for (SpatExtent, SpatExtent): =="><met
 <p><b>Logical</b>: <code>!, &amp;, |, isTRUE, isFALSE</code></p>
 <p><b>Compare</b>: <code> ==, !=, &gt;, &lt;,  &lt;=, &gt;=, is.na, is.nan, is.finite, is.infinite</code></p>
 <p>See <code><a href="not.na.html">not.na</a></code> for the inverse of <code>is.na</code>, and <code><a href="summarize-generics.html">noNA</a></code> to detect cells with missing value across layers.</p>
-<p>The <code>compare</code> and <code>logic</code> methods implement these operators in a method that can return <code>NA</code> istead of <code>FALSE</code> and allows for setting an output filename.</p>
+<p>The <code>compare</code> and <code>logic</code> methods implement these operators in a method that can return <code>NA</code> instead of <code>FALSE</code> and allows for setting an output filename.</p>
 <p>The terra package does not distinguish between <code>NA</code> (not available) and <code>NaN</code> (not a number). In most cases this state is represented by <code>NaN</code>.</p>
 <p>If you use a SpatRaster with a vector of multiple numbers, each element in the vector is considered a layer (with a constant value). If you use a SpatRaster with a matrix, the number of columns of the matrix must match the number of layers of the SpatRaster. The rows are used to match the cells. That is, if there are two rows, these match cells 1 and 2, and they are recycled to 3 and 4, etc.</p>
 <p>The following method has been implemented for <b>(SpatExtent, SpatExtent)</b>: <code>==</code></p>
@@ -85,7 +85,7 @@ The following method has been implemented for (SpatExtent, SpatExtent): =="><met
 <dd><p>SpatRaster or numeric</p></dd>
 
 <dt id="arg-oper">oper<a class="anchor" aria-label="anchor" href="#arg-oper"></a></dt>
-<dd><p>character. Operator name. For <code>compare</code> this can be one of <code>"==", "!=", "&gt;", "&lt;", "&gt;=", "&lt;="</code> and for <code>logic</code> it can be one of <code>"!", "is.na", "not.na", "allNA", "anyNA", "noneNA", "is.infinite", "is.finite", "iSTRUE", "isFALSE"</code></p></dd>
+<dd><p>character. Operator name. For <code>compare</code> this can be one of <code>"==", "!=", "&gt;", "&lt;", "&gt;=", "&lt;="</code> and for <code>logic</code> it can be one of <code>"!", "is.na", "not.na", "allNA", "anyNA", "noneNA", "is.infinite", "is.finite", "isTRUE", "isFALSE"</code></p></dd>
 
 <dt id="arg-falsena">falseNA<a class="anchor" aria-label="anchor" href="#arg-falsena"></a></dt>
 <dd><p>logical. Should the result be <code>TRUE, NA</code> instead of <code>TRUE, FALSE</code>?</p></dd>

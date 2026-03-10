@@ -16,7 +16,7 @@ the inverse of `is.na`, and
 to detect cells with missing value across layers.
 
 The `compare` and `logic` methods implement these operators in a method
-that can return `NA` istead of `FALSE` and allows for setting an output
+that can return `NA` instead of `FALSE` and allows for setting an output
 filename.
 
 The terra package does not distinguish between `NA` (not available) and
@@ -56,7 +56,7 @@ logic(x, oper, falseNA=FALSE, filename="", overwrite=FALSE, ...)
 
   character. Operator name. For `compare` this can be one of
   `"==", "!=", ">", "<", ">=", "<="` and for `logic` it can be one of
-  `"!", "is.na", "not.na", "allNA", "anyNA", "noneNA", "is.infinite", "is.finite", "iSTRUE", "isFALSE"`
+  `"!", "is.na", "not.na", "allNA", "anyNA", "noneNA", "is.infinite", "is.finite", "isTRUE", "isFALSE"`
 
 - falseNA:
 
