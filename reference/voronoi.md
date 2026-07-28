@@ -25,7 +25,10 @@ delaunay(x, tolerance=0, as.lines=FALSE, constrained=FALSE)
 
 - tolerance:
 
-  numeric \>= 0, snapping tolerance (0 is no snapping)
+  numeric \>= 0. Snapping tolerance applied to the input vertices before
+  computing the diagram (`0` is no snapping). Expressed in the units of
+  the CRS of `x`, i.e. meters or feet for projected data and **degrees**
+  for lon/lat data.
 
 - as.lines:
 
@@ -55,19 +58,19 @@ wkt <- c("MULTIPOLYGON ( ((40 40, 20 45, 45 30, 40 40)),
 x <- vect(wkt)
 v <- voronoi(x)
 v
-#>  class       : SpatVector 
-#>  geometry    : polygons 
-#>  dimensions  : 14, 0  (geometries, attributes)
-#>  extent      : -55, 100, -65, 100  (xmin, xmax, ymin, ymax)
-#>  coord. ref. :  
+#> class       : SpatVector
+#> geometry    : polygons
+#> dimensions  : 14, 0  (geometries, attributes)
+#> extent      : -55, 100, -65, 100  (xmin, xmax, ymin, ymax)
+#> coord. ref. : 
 
 d <- delaunay(x)
 d
-#>  class       : SpatVector 
-#>  geometry    : polygons 
-#>  dimensions  : 18, 0  (geometries, attributes)
-#>  extent      : 0, 45, -10, 45  (xmin, xmax, ymin, ymax)
-#>  coord. ref. :  
+#> class       : SpatVector
+#> geometry    : polygons
+#> dimensions  : 18, 0  (geometries, attributes)
+#> extent      : 0, 45, -10, 45  (xmin, xmax, ymin, ymax)
+#> coord. ref. : 
 
 plot(v, lwd=2, col=rainbow(15))
 lines(x, col="gray", lwd=2)

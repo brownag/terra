@@ -33,9 +33,9 @@ as.list(x, ...)
 
   character or NULL. If not NULL, and `x` is a SpatVector, it should be
   either "WKT" or "HEX", to get the geometry included in Well-Known-Text
-  or hexadecimal notation. If `x` has point geometry, it can also bey
+  or hexadecimal notation. If `x` has point geometry, it can also be
   "XY" to add the coordinates of each point. If `x` is a SpatRaster, any
-  value that is not NULL will return a list with the the parameters
+  value that is not NULL will return a list with the parameters
   describing the geometry of the SpatRaster are returned
 
 - ...:
@@ -86,39 +86,39 @@ as.list(v)
 s <- rast(system.file("ex/logo.tif", package="terra")) + 1  
 as.list(s)
 #> [[1]]
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 77, 101, 1  (nrow, ncol, nlyr)
 #> resolution  : 1, 1  (x, y)
 #> extent      : 0, 101, 0, 77  (xmin, xmax, ymin, ymax)
-#> coord. ref. : Cartesian (Meter) 
+#> coord. ref. : Cartesian (Meter)
 #> source(s)   : memory
-#> varname     : logo 
-#> name        : red 
-#> min value   :   1 
-#> max value   : 256 
+#> varname     : logo
+#> name        : red
+#> min value   :   1
+#> max value   : 256
 #> 
 #> [[2]]
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 77, 101, 1  (nrow, ncol, nlyr)
 #> resolution  : 1, 1  (x, y)
 #> extent      : 0, 101, 0, 77  (xmin, xmax, ymin, ymax)
-#> coord. ref. : Cartesian (Meter) 
+#> coord. ref. : Cartesian (Meter)
 #> source(s)   : memory
-#> varname     : logo 
-#> name        : green 
-#> min value   :     1 
-#> max value   :   256 
+#> varname     : logo
+#> name        : green
+#> min value   :     1
+#> max value   :   256
 #> 
 #> [[3]]
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 77, 101, 1  (nrow, ncol, nlyr)
 #> resolution  : 1, 1  (x, y)
 #> extent      : 0, 101, 0, 77  (xmin, xmax, ymin, ymax)
-#> coord. ref. : Cartesian (Meter) 
+#> coord. ref. : Cartesian (Meter)
 #> source(s)   : memory
-#> varname     : logo 
-#> name        : blue 
-#> min value   :    1 
-#> max value   :  256 
+#> varname     : logo
+#> name        : blue
+#> min value   :    1
+#> max value   :  256
 #> 
 ```

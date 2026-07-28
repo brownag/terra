@@ -27,13 +27,13 @@ vector data objects defined in the `sf` or `sp` packages.
 ``` r
 # S4 method for class 'character'
 vect(x, layer="", query="", dialect="", extent=NULL, filter=NULL, 
-    crs="", proxy=FALSE, what="", opts=NULL)
+    crs="", proxy=FALSE, what="", opts=NULL, kml.extended=NULL)
 
 # S4 method for class 'matrix'
 vect(x, type="points", atts=NULL, crs="")
 
 # S4 method for class 'data.frame'
-vect(x, geom=NULL, crs=NULL, keepgeom=FALSE, quiet=TRUE)
+vect(x, geom=NULL, crs=NULL, keepgeom=FALSE, quiet=FALSE)
 
 # S4 method for class 'list'
 vect(x, type="points", crs="")
@@ -119,6 +119,19 @@ vect(x)
 
   character. GDAL dataset open options. For example "ENCODING=LATIN1"
 
+- kml.extended:
+
+  logical or `NULL`. For `.kml` and `.kmz` files: GDAL's `KML` driver
+  (common on Windows) often reads only `Name` and `Description`, while
+  the `LIBKML` driver (common on Linux) may add many KML structure
+  fields as columns (often empty). With `NULL` (default) or `TRUE`, if
+  the suggested `XML` package is available, `terra` parses
+  `ExtendedData` and replaces the attribute table when the placemark
+  count matches the vector's feature count (same order as `<Placemark>`
+  elements with geometry). For `.kmz`, the archive is unpacked to a
+  temporary directory, preferring `doc.kml` if present. With `FALSE`,
+  GDAL fields are kept. Ignored when `proxy=TRUE` or `what != ""`.
+
 - geom:
 
   character. The field name(s) with the geometry data. Either two names
@@ -134,8 +147,8 @@ vect(x)
 
 - quiet:
 
-  logical. If `TRUE` a warning is given when `x` is a data.frame and the
-  values for geom and/or the crs are guessed from the data
+  logical. If `FALSE` a warning is given when `x` is a data.frame and
+  the values for geom and/or the crs are guessed from the data
 
 ## See also
 
@@ -155,17 +168,18 @@ f
 #> [1] "/home/runner/work/_temp/Library/terra/ex/lux.shp"
 v <- vect(f)
 v
-#>  class       : SpatVector 
-#>  geometry    : polygons 
-#>  dimensions  : 12, 6  (geometries, attributes)
-#>  extent      : 5.74414, 6.528252, 49.44781, 50.18162  (xmin, xmax, ymin, ymax)
-#>  source      : lux.shp
-#>  coord. ref. : lon/lat WGS 84 (EPSG:4326) 
-#>  names       :  ID_1   NAME_1  ID_2   NAME_2  AREA       POP
-#>  type        : <num>    <chr> <num>    <chr> <num>     <num>
-#>  values      :     1 Diekirch     1 Clervaux   312 1.808e+04
-#>                    1 Diekirch     2 Diekirch   218 3.254e+04
-#>                    1 Diekirch     3  Redange   259 1.866e+04
+#> class       : SpatVector
+#> geometry    : polygons
+#> dimensions  : 12, 6  (geometries, attributes)
+#> extent      : 5.74414, 6.528252, 49.44781, 50.18162  (xmin, xmax, ymin, ymax)
+#> source      : lux.shp
+#> coord. ref. : lon/lat WGS 84 (EPSG:4326)
+#> names       :  ID_1   NAME_1  ID_2   NAME_2  AREA   POP
+#> type        : <num>    <chr> <num>    <chr> <num> <num>
+#> values      :     1 Diekirch     1 Clervaux   312 18081
+#>                   1 Diekirch     2 Diekirch   218 32543
+#>                   1 Diekirch     3  Redange   259 18664
+#>               ...
 
 ## subsetting (large) files
 ## with attribute query 
@@ -191,11 +205,11 @@ colnames(z)[3:4] <- c('x', 'y')
 
 p <- vect(z, "polygons")
 p
-#>  class       : SpatVector 
-#>  geometry    : polygons 
-#>  dimensions  : 3, 0  (geometries, attributes)
-#>  extent      : -180, 160, -60, 60  (xmin, xmax, ymin, ymax)
-#>  coord. ref. :  
+#> class       : SpatVector
+#> geometry    : polygons
+#> dimensions  : 3, 0  (geometries, attributes)
+#> extent      : -180, 160, -60, 60  (xmin, xmax, ymin, ymax)
+#> coord. ref. : 
 
 z[z[, "hole"]==1, "object"] <- 4
 lns <- vect(z[,1:4], "lines")
@@ -231,6 +245,7 @@ d$wkt <- NULL
 d$lon <- c(0,10)
 d$lat <- c(0,10)
 x <- vect(d, geom=c("lon", "lat"))
+#> Warning: [vect] guessed crs
 
 # SpatVector to sf
 #sf::st_as_sf(x)

@@ -12,7 +12,7 @@ a SpatVector has duplicated geometries.
 ``` r
 # S4 method for class 'SpatRaster,SpatRaster'
 compareGeom(x, y, ..., lyrs=FALSE, crs=TRUE, warncrs=FALSE, ext=TRUE,
-  rowcol=TRUE, res=FALSE, stopOnError=TRUE, messages=FALSE)
+  rowcol=TRUE, res=FALSE, stopOnError=TRUE, messages=FALSE, tolerance=NULL)
 
 # S4 method for class 'SpatVector,SpatVector'
 compareGeom(x, y, tolerance=0)
@@ -74,7 +74,12 @@ compareGeom(x, y, tolerance=0)
 
 - tolerance:
 
-  numeric
+  numeric. For `SpatRaster` objects this is the difference in raster
+  extent (expressed as the fraction of the raster resolution) that can
+  be ignored when comparing alignment of rasters. If `NULL` the value
+  shown by
+  [`terraOptions`](https://rspatial.github.io/terra/reference/terraOptions.md)
+  is used
 
 ## Value
 
@@ -92,6 +97,7 @@ nrow(r3) <- 10
 
 
 if (FALSE) { # \dontrun{
-compareGeom(r1, r3)
+# this fails because the number of rows is different
+try(compareGeom(r1, r3))
 } # }
 ```

@@ -17,7 +17,7 @@ for getting information about the sub-datasets present in a file.
 sds(x) 
 
 # S4 method for class 'character'
-sds(x, ids=0, opts=NULL, raw=FALSE, noflip=FALSE, guessCRS=TRUE, domains="")
+sds(x, ids=0, opts=NULL, raw=FALSE, noflip=FALSE, guessCRS=TRUE, domains="", md=FALSE)
 
 # S4 method for class 'SpatRaster'
 sds(x, ...) 
@@ -70,6 +70,17 @@ sds(x, crs="", extent=NULL)
   [`metags`](https://rspatial.github.io/terra/reference/metags.md) to
   retrieve their values if there are any). "" is the default domain
 
+- md:
+
+  logical. If `TRUE`, the multi-dimensional GDAL API is used for reading
+  the file. This API can only be used for a few file formats
+  (netCDF/HDF5) and can sometimes provide notably faster reading of data
+  with many (time) steps in the third or higher dimension. If no
+  subdataset is selected with `subds`, all usable arrays are combined
+  into one `SpatRaster` (like `md=FALSE`); a warning reports how many
+  variables and layers were combined when there is more than one
+  variable.
+
 - crs:
 
   character. Description of the Coordinate Reference System (map
@@ -101,39 +112,39 @@ s <- rast(system.file("ex/logo.tif", package="terra"))
 x <- sds(s, s/2)
 names(x) <- c("first", "second")
 x
-#> class       : SpatRasterDataset 
-#> subdatasets : 2 
+#> class       : SpatRasterDataset
+#> subdatasets : 2
 #> dimensions  : 77, 101 (nrow, ncol)
-#> nlyr        : 3, 3 
+#> nlyr        : 3, 3
 #> resolution  : 1, 1  (x, y)
 #> extent      : 0, 101, 0, 77  (xmin, xmax, ymin, ymax)
-#> coord. ref. : Cartesian (Meter) 
-#> source(s)   : logo.tif, memory 
-#> names       : first, second 
+#> coord. ref. : Cartesian (Meter)
+#> source(s)   : logo.tif, memory
+#> names       : first, second
 length(x)
 #> [1] 2
 
 # extract the second SpatRaster
 x[2]
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 77, 101, 3  (nrow, ncol, nlyr)
 #> resolution  : 1, 1  (x, y)
 #> extent      : 0, 101, 0, 77  (xmin, xmax, ymin, ymax)
-#> coord. ref. : Cartesian (Meter) 
+#> coord. ref. : Cartesian (Meter)
 #> source(s)   : memory
-#> varname     : logo 
-#> names       :   red, green,  blue 
-#> min values  :   0.0,   0.0,   0.0 
-#> max values  : 127.5, 127.5, 127.5 
+#> varname     : logo
+#> names       :   red, green,  blue
+#> min values  :     0,     0,     0
+#> max values  : 127.5, 127.5, 127.5
 
 a <- array(1:9, c(3,3,3,3))
 sds(a)
-#> class       : SpatRasterDataset 
-#> subdatasets : 3 
+#> class       : SpatRasterDataset
+#> subdatasets : 3
 #> dimensions  : 3, 3 (nrow, ncol)
-#> nlyr        : 3, 3, 3 
+#> nlyr        : 3, 3, 3
 #> resolution  : 1, 1  (x, y)
 #> extent      : 0, 3, 0, 3  (xmin, xmax, ymin, ymax)
-#> coord. ref. :  
-#> source(s)   : memory 
+#> coord. ref. : 
+#> source(s)   : memory
 ```

@@ -21,7 +21,7 @@ vrt(x, filename="", options=NULL, overwrite=FALSE, return_filename=FALSE)
 
   SpatRasterCollection or character vector with filenames of raster
   "tiles". That is, files that have data for, typically non-overlapping,
-  sub-regions of an raster. See
+  sub-regions of a raster. See
   [`makeTiles`](https://rspatial.github.io/terra/reference/makeTiles.md)
 
 - filename:
@@ -81,10 +81,10 @@ x <- rast(ncols=2, nrows=2)
 filename <- paste0(tempfile(), "_.tif")
 ff <- makeTiles(r, x, filename)
 ff
-#> [1] "/tmp/RtmpGlrIfi/file24d042c723cc_1.tif"
-#> [2] "/tmp/RtmpGlrIfi/file24d042c723cc_2.tif"
-#> [3] "/tmp/RtmpGlrIfi/file24d042c723cc_3.tif"
-#> [4] "/tmp/RtmpGlrIfi/file24d042c723cc_4.tif"
+#> [1] "/tmp/Rtmp3DbP1I/file22f241aed436_1.tif"
+#> [2] "/tmp/Rtmp3DbP1I/file22f241aed436_2.tif"
+#> [3] "/tmp/Rtmp3DbP1I/file22f241aed436_3.tif"
+#> [4] "/tmp/Rtmp3DbP1I/file22f241aed436_4.tif"
 
 #vrtfile <- paste0(tempfile(), ".vrt")
 #v <- vrt(ff, vrtfile)

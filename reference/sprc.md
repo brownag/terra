@@ -14,7 +14,7 @@ You can create a SpatRasterCollection from a file with subdatasets.
 
 ``` r
 # S4 method for class 'character'
-sprc(x, ids=0, opts=NULL, raw=FALSE, noflip=FALSE, guessCRS=TRUE, domains="") 
+sprc(x, ids=0, opts=NULL, raw=FALSE, noflip=FALSE, guessCRS=TRUE, domains="", group=FALSE) 
 
 # S4 method for class 'SpatRaster'
 sprc(x, ...) 
@@ -55,7 +55,7 @@ sprc(x)
 
 - guessCRS:
 
-  logical. If `TRUE` and the the file does not specify a CRS but has an
+  logical. If `TRUE` and the file does not specify a CRS but has an
   extent that is within longitude/latitude bounds, the
   longitude/latitude crs is assigned to the SpatRaster
 
@@ -64,6 +64,13 @@ sprc(x)
   character. Metadata domains to read (see
   [`metags`](https://rspatial.github.io/terra/reference/metags.md) to
   retrieve their values if there are any. "" is the default domain
+
+- group:
+
+  logical. If `TRUE`, files that share the same raster geometry are
+  combined into a single multi-layer `SpatRaster`. Useful when tiles are
+  split across folders with one file per band (e.g. Sentinel-2 /
+  Landsat)
 
 - ...:
 
@@ -88,11 +95,11 @@ values(y) <- 1:ncell(y)
 
 z <- sprc(x, y)
 z
-#> class       : SpatRasterCollection 
-#> length      : 2 
-#> nrow        : 30, 30 
-#> ncol        : 60, 60 
-#> nlyr        :  1,  1 
+#> class       : SpatRasterCollection
+#> length      : 2
+#> nrow        : 30, 30
+#> ncol        : 60, 60
+#> nlyr        :  1,  1
 #> extent      : -110, -20, 30, 70  (xmin, xmax, ymin, ymax)
-#> crs (first) : lon/lat WGS 84 (CRS84) (OGC:CRS84) 
+#> crs (first) : lon/lat WGS 84 (CRS84) (OGC:CRS84)
 ```

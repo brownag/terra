@@ -6,12 +6,14 @@ SpatRaster or a matrix with coordinates.
 ## Usage
 
 ``` r
-# S4 method for class 'SpatVector'
-project(x, y, partial = FALSE)
-
 # S4 method for class 'SpatRaster'
 project(x, y, method, mask=FALSE, align_only=FALSE, res=NULL, 
-  origin=NULL, threads=FALSE, filename="", ..., use_gdal=TRUE, by_util = FALSE)
+  origin=NULL, threads=FALSE, use_gdal=TRUE, by_util=FALSE, pipeline="", 
+  AOI=NULL, desired_accuracy=-1.0, allow_approx=TRUE, filename="", ...)
+
+# S4 method for class 'SpatVector'
+project(x, y, partial=FALSE, pipeline="", AOI=NULL,
+    desired_accuracy=-1.0, allow_approx=TRUE)
 
 # S4 method for class 'SpatExtent'
 project(x, from, to)
@@ -108,16 +110,10 @@ project(x, from, to)
 
 - threads:
 
-  logical. If `TRUE` multiple threads are used (faster for large files)
-
-- filename:
-
-  character. Output filename
-
-- ...:
-
-  additional arguments for writing files as in
-  [`writeRaster`](https://rspatial.github.io/terra/reference/writeRaster.md)
+  logical or positive integer. If `TRUE`, multiple threads are used
+  (faster for large files), no more than the "threads" setting of
+  [`terraOptions`](https://rspatial.github.io/terra/reference/terraOptions.md).
+  A number sets the thread count for this call directly
 
 - use_gdal:
 
@@ -130,6 +126,41 @@ project(x, from, to)
 - by_util:
 
   logical. If `TRUE` and `gdal=TRUE`, the GDAL warp utility is used
+
+- pipeline:
+
+  character. A PROJ pipeline string to use for the coordinate
+  transformation instead of letting GDAL select one automatically. You
+  can use
+  [`proj_pipelines`](https://rspatial.github.io/terra/reference/proj_pipelines.md)
+  to find available pipelines. When a pipeline is set, `y` is still used
+  to set the output CRS
+
+- AOI:
+
+  SpatExtent or object that has a SpatExtent to set the area of interest
+  for the transformation. This is used to select the most appropriate
+  transformation pipeline
+
+- desired_accuracy:
+
+  numeric. Only use transformations with at least this accuracy (in
+  metres). Use `-1` (the default) for no constraint. Requires GDAL \>=
+  3.3
+
+- allow_approx:
+
+  logical. If `FALSE`, only use transformations with known accuracy (no
+  "ballpark" transformations). Requires GDAL \>= 3.3
+
+- filename:
+
+  character. Output filename
+
+- ...:
+
+  additional arguments for writing files as in
+  [`writeRaster`](https://rspatial.github.io/terra/reference/writeRaster.md)
 
 - from:
 
@@ -146,7 +177,11 @@ SpatVector or SpatRaster
 ## See also
 
 [`crs`](https://rspatial.github.io/terra/reference/crs.md),
-[`resample`](https://rspatial.github.io/terra/reference/resample.md)
+[`resample`](https://rspatial.github.io/terra/reference/resample.md),
+[`warp_scale`](https://rspatial.github.io/terra/reference/warp_scale.md),
+[`proj_pipelines`](https://rspatial.github.io/terra/reference/proj_pipelines.md)
+and [`projNetwork`](https://rspatial.github.io/terra/reference/gdal.md)
+to enable or disable PROJ network access for datum grid downloads.
 
 ## Note
 
@@ -181,6 +216,7 @@ using lon/lat data that spans a large North-South extent.
 
 ``` r
 ## SpatRaster
+if (FALSE) { # \dontrun{
 a <- rast(ncols=40, nrows=40, xmin=-110, xmax=-90, ymin=40, ymax=60, 
           crs="+proj=longlat +datum=WGS84")
 values(a) <- 1:ncell(a)
@@ -193,45 +229,9 @@ w <- project(a, b)
 f <- system.file("ex/lux.shp", package="terra")
 v <- vect(f)
 crs(v, proj=TRUE)
-#> [1] "+proj=longlat +datum=WGS84 +no_defs"
 cat(crs(v), "\n")
-#> GEOGCRS["WGS 84",
-#>     DATUM["World Geodetic System 1984",
-#>         ELLIPSOID["WGS 84",6378137,298.257223563,
-#>             LENGTHUNIT["metre",1]]],
-#>     PRIMEM["Greenwich",0,
-#>         ANGLEUNIT["degree",0.0174532925199433]],
-#>     CS[ellipsoidal,2],
-#>         AXIS["geodetic latitude (Lat)",north,
-#>             ORDER[1],
-#>             ANGLEUNIT["degree",0.0174532925199433]],
-#>         AXIS["geodetic longitude (Lon)",east,
-#>             ORDER[2],
-#>             ANGLEUNIT["degree",0.0174532925199433]],
-#>     ID["EPSG",4326]] 
 
 project(v, "+proj=moll")
-#>  class       : SpatVector 
-#>  geometry    : polygons 
-#>  dimensions  : 12, 6  (geometries, attributes)
-#>  extent      : 437476.4, 497805.3, 5815524, 5892478  (xmin, xmax, ymin, ymax)
-#>  coord. ref. : +proj=moll +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs 
-#>  names       :  ID_1   NAME_1  ID_2   NAME_2  AREA       POP
-#>  type        : <num>    <chr> <num>    <chr> <num>     <num>
-#>  values      :     1 Diekirch     1 Clervaux   312 1.808e+04
-#>                    1 Diekirch     2 Diekirch   218 3.254e+04
-#>                    1 Diekirch     3  Redange   259 1.866e+04
-
-
 project(v, "EPSG:2169")
-#>  class       : SpatVector 
-#>  geometry    : polygons 
-#>  dimensions  : 12, 6  (geometries, attributes)
-#>  extent      : 49540.31, 105922, 57009.53, 138631.1  (xmin, xmax, ymin, ymax)
-#>  coord. ref. : LUREF / Luxembourg TM (EPSG:2169) 
-#>  names       :  ID_1   NAME_1  ID_2   NAME_2  AREA       POP
-#>  type        : <num>    <chr> <num>    <chr> <num>     <num>
-#>  values      :     1 Diekirch     1 Clervaux   312 1.808e+04
-#>                    1 Diekirch     2 Diekirch   218 3.254e+04
-#>                    1 Diekirch     3  Redange   259 1.866e+04
+} # }
 ```
